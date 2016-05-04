@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.example.viewpage.NoScrollViewPager
+        android:id="@+id/noScrollViewPager1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:layout_weight="1">
+    </com.example.viewpage.NoScrollViewPager>
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A1B9B1"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radio_home"
+            style="@style/Pub_TabStyle"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/radio_h1"
+            style="@style/Pub_TabStyle"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/radio_h2"
+            style="@style/Pub_TabStyle"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/radio_h3"
+            style="@style/Pub_TabStyle"
+            android:drawableTop="@drawable/ic_launcher"
+            android:text="首页" />
+    </RadioGroup>
+
+</LinearLayout>
