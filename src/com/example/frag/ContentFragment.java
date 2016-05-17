@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 import com.example.base.tab.pager.HomePager;
 import com.example.base.tab.pager.NewsPager;
+import com.example.pupwindow.SelectPopupWinow;
 import com.example.viewpage.BasePager;
-import com.example.viewpage.BasePagerAdapter;
+
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -20,6 +21,7 @@ public class ContentFragment extends BaseFragment {
 	private RadioGroup rg;
 	private ViewPager vp;
 	private ArrayList<BasePager> ArryList;
+	private SelectPopupWinow spw;
 
 	@Override
 	public View initViews() {
@@ -48,10 +50,10 @@ public class ContentFragment extends BaseFragment {
 					vp.setCurrentItem(1, false);// 去掉切换页面的动画
 					break;
 				case R.id.radio_h2:
-
+					vp.setCurrentItem(0, false);// 去掉切换页面的动画
 					break;
 				case R.id.radio_h3:
-
+					vp.setCurrentItem(1, false);// 去掉切换页面的动画
 					break;
 				default:
 					break;

@@ -1,10 +1,10 @@
 package com.example.frag;
+
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
-
 
 public class MainActivity extends FragmentActivity {
 
@@ -18,26 +18,24 @@ public class MainActivity extends FragmentActivity {
 		initFragment();
 	}
 
-	
 	private void initFragment() {
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
-	transaction.replace(R.id.fl_content, new ContentFragment(),
+		transaction.replace(R.id.fl_content, new ContentFragment(),
 				FRAGMENT_CONTENT);
 
 		transaction.commit();// 鎻愪氦浜嬪姟
 		// Fragment leftMenuFragment = fm.findFragmentByTag(FRAGMENT_LEFT_MENU);
-		
+
 	}
 
-/*	// 鑾峰彇渚ц竟鏍廸ragment
-	public LeftMenuFragment getLeftMenuFragment() {
-		FragmentManager fm = getSupportFragmentManager();
-		LeftMenuFragment fragment = (LeftMenuFragment) fm
-				.findFragmentByTag(FRAGMENT_LEFT_MENU);
-
-		return fragment;
-	}*/
+	/*
+	 * // 鑾峰彇渚ц竟鏍廸ragment public LeftMenuFragment getLeftMenuFragment() {
+	 * FragmentManager fm = getSupportFragmentManager(); LeftMenuFragment
+	 * fragment = (LeftMenuFragment) fm .findFragmentByTag(FRAGMENT_LEFT_MENU);
+	 * 
+	 * return fragment; }
+	 */
 
 	public ContentFragment getContentFragment() {
 		FragmentManager fm = getSupportFragmentManager();

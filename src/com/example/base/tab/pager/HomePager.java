@@ -10,7 +10,6 @@ public class HomePager extends BasePager {
 
 	public HomePager(Activity activity) {
 		super(activity);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
