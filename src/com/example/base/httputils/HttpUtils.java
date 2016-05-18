@@ -25,6 +25,7 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import com.example.exception.ConnectException;
 import com.example.frag.R;
 
 import android.content.Context;
@@ -46,7 +47,6 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 			if(!Utils.isNetworkAvailable(context)){
 				resultStr="NetWorkConnectException";
 			} 
-			
 			HttpParams httpParameters = new BasicHttpParams();
 		    HttpConnectionParams.setConnectionTimeout(httpParameters, 2000);
 		    HttpConnectionParams.setSoTimeout(httpParameters, 2000);  
@@ -108,12 +108,12 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 	 * @return
 	 */
 	public static String GetByHttpClient(final Context context,final String url,final Map<String, String>fields){
-
+		
 		try {
 			if(!Utils.isNetworkAvailable(context)){
 				resultStr="NetWorkConnectException";;
 			}
-		
+			
 			httpClient=new  DefaultHttpClient();
 			List<BasicNameValuePair>ListParams=new ArrayList<BasicNameValuePair>();
 				if (null != fields) {
@@ -140,7 +140,7 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 		}
 		
 		
-		return resultStr;
+		return ConverErrorMessageShow(resultStr);
 		
 	}
 	/**
@@ -154,7 +154,7 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 		}else if(msg.contains("refused")){
 			return Constants.ERROR_NETWORKEXCEPTION;
 		}else if(msg.contains("NetWorkConnectException")){
-			return Constants.ERROR_NETWORKEXCEPTION;
+			return Constants.ERROR_NOAVAIABLE_NETWORK;
 		}
 		
 		return msg;

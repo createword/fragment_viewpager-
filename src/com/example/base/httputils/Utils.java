@@ -1,5 +1,7 @@
 package com.example.base.httputils;
 
+import com.example.exception.ConnectException;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,14 +16,15 @@ public class Utils {
      * @return
      */
     
-    public static boolean isNetworkAvailable(Context context)
+    public static boolean isNetworkAvailable(Context context)throws ConnectException
     {
         // 获取手机所有连接管理对象（包括对wi-fi,net等连接的管理）
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         
         if (connectivityManager == null)
         {
-            return false;
+        	throw new ConnectException("connectivityManager");
+            
         }
         else
         {
@@ -42,7 +45,7 @@ public class Utils {
                 }
             }
         }
-        return false;
+        throw new ConnectException("NetWorkConnectException");
     }
 	/**
 	 * 短Tosat
