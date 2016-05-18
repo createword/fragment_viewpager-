@@ -34,6 +34,7 @@ import android.util.Log;
 public class HttpUtils {
 private static  String resultStr=null; 
 private static HttpClient httpClient;
+private static HttpResponse httpResponse;
 private static AppCustomDialog dialog;
 /**
  * 张恒铭 post请求
@@ -56,22 +57,22 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 				for (Map.Entry<String, String> entry : params.entrySet()) {
 						nameValuePair.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
 						//URL拼串 通过打印判断传参是否正确
-						url = url + entry.getKey() + "="+ new String(entry.getValue().toString().getBytes(), "iso-8859-1") + "&";
+				url = url + entry.getKey() + "="+ new String(entry.getValue().toString().getBytes(), "iso-8859-1") + "&";
 				}
-				LogUtils.d("URL拼串----->"+url.substring(0,url.length()-1));
-		      
+			
+		      System.out.println("URL拼串----->"+url.substring(0,url.length()-1));
 			}
 		
 			hPost.setEntity(new UrlEncodedFormEntity(nameValuePair,
 					HTTP.UTF_8));
 			
 			try {
-				HttpResponse httpResponse = httpClient.execute(hPost);
+				 httpResponse = httpClient.execute(hPost);
 				if(httpResponse.getStatusLine().getStatusCode()==HttpStatus.SC_OK){
 					//取返回的字符串
 					resultStr=EntityUtils.toString(httpResponse.getEntity(),HTTP.UTF_8);	
 				}
-				System.out.println("服务器返回状态结果StatusCode-->"+httpResponse.getStatusLine().getStatusCode());
+
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
 				resultStr="错误:"+e.getMessage();
@@ -92,10 +93,8 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 			}
 			
 		}
-    System.out.println("服务器返回结果StrResult"+resultStr);
-	
-     //return ConverErrorMessageShow(resultStr);
-		return ConverErrorMessageShow(resultStr);
+  System.out.println("StateCode:"+httpResponse.getStatusLine().getStatusCode()+":返回结果StrResult"+resultStr);
+		return resultStr;
 
 	}
 	/**
@@ -115,7 +114,7 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 					for (Map.Entry<String, String> entry : fields.entrySet()) {
 						ListParams.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
 					}		
-			}
+			    }
 				String params =URLEncodedUtils.format(ListParams, HTTP.UTF_8);
 			    HttpGet  hGet=new  HttpGet(url+"?"+params);
 			    HttpResponse httpResponse = httpClient.execute(hGet);
@@ -123,9 +122,8 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
                     HttpEntity entity = httpResponse.getEntity();
                     resultStr = EntityUtils.toString(entity, "utf-8");  
                 }
-			    System.out.println("服务器返回结果StrResult"+resultStr);
+			 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			resultStr="错误:"+e.getMessage();
 		}finally{
@@ -133,26 +131,9 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 				httpClient.getConnectionManager().shutdown();
 			}
 		}
-		
-		
-		return ConverErrorMessageShow(resultStr);
-		
-	}
-	/**
-	 * 
-	 * @param msg
-	 * @return
-	 */
-	public static String ConverErrorMessageShow(String msg){
-		if(msg.contains("time out")){
-			return Constants.ERROR_NETWORK_TIMEOUT;
-		}else if(msg.contains("refused")){
-			return Constants.ERROR_NETWORKEXCEPTION;
-		}else if(msg.contains("NetWorkConnectException")){
-			return Constants.ERROR_NOAVAIABLE_NETWORK;
-		}
-		
-		return msg;
+        System.out.println("服务器返回结果StrResult"+resultStr);
+	   return resultStr;
 		
 	}
+
 }

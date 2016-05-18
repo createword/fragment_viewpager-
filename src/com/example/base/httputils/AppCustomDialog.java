@@ -16,17 +16,6 @@ import android.view.WindowManager;
 public class AppCustomDialog extends Dialog {
 	private static int default_width = 160; // 默认宽度
 	private static int default_height = 120;// 默认高度
-	public static AppCustomDialog newInstance;
-
-	public static AppCustomDialog getInstance(Context context) {
-		if (newInstance == null) {
-			newInstance = new AppCustomDialog(context,
-					R.layout.progress_dialog, R.style.DialogTheme);
-		}
-		return newInstance;
-
-	}
-
 	public AppCustomDialog(Context context, int layout, int style) {
 		this(context, default_width, default_height, layout, style);
 	}
@@ -60,20 +49,5 @@ public class AppCustomDialog extends Dialog {
 		return dm.density;
 	}
 
-	/**
-	 * status 1 -->显示 
-	 * status 2 -->消失
-	 * 
-	 * @param status
-	 */
-	public static void StatusDialog(int status) {
-		if (status == 1) {
-			newInstance.show();
-		} else if (status == 2) {
-			if (newInstance.isShowing()) {
-				newInstance.dismiss();
-			}
-		}
 
-	}
 }
