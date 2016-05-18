@@ -21,6 +21,7 @@ import com.example.viewpage.BasePager;
 
 public class HomePager extends BasePager {
 	String Purl = null;
+	View view ;
 	private Handler handlerUI = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
@@ -37,15 +38,17 @@ public class HomePager extends BasePager {
 	}
 
 	@Override
-	public void initData() {
+	public void initViewData() {
+		ViewErrorState();
 		tvTitle.setText("JSON½âÎö");
-		View view = LayoutInflater.from(mActivity).inflate(R.layout.home_pager,
+		 view = LayoutInflater.from(mActivity).inflate(R.layout.home_pager,
 				null);
 		flContent.addView(view);
 		view.findViewById(R.id.btn_asy).setOnClickListener(
 				new OnClickListener() {
 					public void onClick(View v) {
-						final String url = IpUtils.MainIpServer+"/webServlet/MyServlet";
+						final String url = IpUtils.MainIpServer
+								+ "/webServlet/MyServlet";
 						final Map<String, String> params = new HashMap<String, String>();
 						params.put("name", "xiao");
 						params.put("age", "12");
@@ -57,9 +60,12 @@ public class HomePager extends BasePager {
 								handlerUI.sendEmptyMessage(1);
 							};
 						}.start();
-					
+
 					}
 				});
+
 	}
+
+	
 
 }

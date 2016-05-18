@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.example.base.tab.pager.HomePager;
 import com.example.base.tab.pager.NewsPager;
-import com.example.pupwindow.SelectPopupWinow;
 import com.example.viewpage.BasePager;
 
 
@@ -13,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
@@ -21,7 +21,7 @@ public class ContentFragment extends BaseFragment {
 	private RadioGroup rg;
 	private ViewPager vp;
 	private ArrayList<BasePager> ArryList;
-	private SelectPopupWinow spw;
+	
 
 	@Override
 	public View initViews() {
@@ -64,7 +64,7 @@ public class ContentFragment extends BaseFragment {
 		vp.setOnPageChangeListener(new OnPageChangeListener() {
 			public void onPageSelected(int position) {
 
-				ArryList.get(position).initData();// 获取当前被选中的页面, 初始化该页面数据
+				ArryList.get(position).initViewData();// 获取当前被选中的页面, 初始化该页面数据
 			}
 
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
@@ -75,7 +75,7 @@ public class ContentFragment extends BaseFragment {
 
 			}
 		});
-		ArryList.get(0).initData();// 初始化首页数据
+		ArryList.get(0).initViewData();// 初始化首页数据
 	
 	}
 

@@ -30,12 +30,22 @@
             android:padding="10dp"
             android:text="菜单" />
     </RelativeLayout>
+    <!-- 内容填充区 -->
 
     <FrameLayout
         android:id="@+id/pager_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" >
+    </FrameLayout>
+    <!-- 状态显示填充区 -->
+    <FrameLayout
+        android:id="@+id/pager_state_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone" >
     </FrameLayout>
 
 </LinearLayout>

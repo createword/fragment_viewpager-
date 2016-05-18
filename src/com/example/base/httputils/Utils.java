@@ -10,8 +10,9 @@ import android.widget.Toast;
 public class Utils {
 
 	  /**
+	   * zhanghengming
      * 检查当前网络是否可用
-     * 
+     * 注意 这里的false 用异常代替了  也就是联网时true 没连网时抛异常
      * @param context
      * @return
      */
@@ -24,7 +25,7 @@ public class Utils {
         if (connectivityManager == null)
         {
         	throw new ConnectException("connectivityManager");
-            
+        
         }
         else
         {
@@ -46,6 +47,7 @@ public class Utils {
             }
         }
         throw new ConnectException("NetWorkConnectException");
+    
     }
 	/**
 	 * 短Tosat

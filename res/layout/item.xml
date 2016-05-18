@@ -5,13 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    
+
     <com.example.viewpage.NoScrollViewPager
         android:id="@+id/noScrollViewPager1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" 
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
     </com.example.viewpage.NoScrollViewPager>
-
+    <!-- 状态显示区 -->
+   
     <RadioGroup
         android:id="@+id/group"
         android:layout_width="match_parent"

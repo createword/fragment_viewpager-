@@ -1,15 +1,21 @@
 package com.example.viewpage;
 
+import com.example.base.httputils.Utils;
+import com.example.exception.ConnectException;
 import com.example.frag.R;
 
 import android.app.Activity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebView.FindListener;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class BasePager {
+public  class BasePager {
 
 	public Activity mActivity;
 	public View mRootView;// 布局对象
@@ -19,12 +25,13 @@ public class BasePager {
 	public FrameLayout flContent;// 内容
 
 	public ImageButton btnMenu;// 菜单按钮
+	
+	public FrameLayout StateMainLayout;//状态显示区
 
 	public BasePager(Activity activity) {
 		mActivity = activity;
 		initViews();
-	}
-
+	}     
 	/**
 	 * 初始化布局
 	 */
@@ -32,15 +39,34 @@ public class BasePager {
 		mRootView = View.inflate(mActivity, R.layout.base_pager, null);
 		tvTitle = (TextView) mRootView.findViewById(R.id.base_title);
 		flContent = (FrameLayout) mRootView.findViewById(R.id.pager_content);
+		StateMainLayout=(FrameLayout) mRootView.findViewById(R.id.pager_state_content);
 
 	}
+
 
 	/**
 	 * 初始化数据
 	 */
-	public void initData() {
-		
-	}
-	
+	public void initViewData() {
 
+	}
+
+	/**
+	 * 状态页面 调用时一定要在initData里初始化 当网络连接时显示内容没连接显示连接异常
+	 */
+
+	public void ViewErrorState() {
+		try {
+			if (Utils.isNetworkAvailable(mActivity)) {
+				flContent.setVisibility(View.VISIBLE);
+				StateMainLayout.setVisibility(View.GONE);
+			
+			}
+		} catch (ConnectException e) {
+			flContent.setVisibility(View.GONE);
+			StateMainLayout.setVisibility(View.VISIBLE);
+			StateMainLayout.addView(LayoutInflater.from(mActivity).inflate(R.layout.base_error_info, null));
+
+		}
+	}
 }

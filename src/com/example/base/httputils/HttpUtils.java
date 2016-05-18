@@ -44,9 +44,7 @@ private static AppCustomDialog dialog;
  */
 public static String PostByHttpClient( Context context,  String url, Map<String, String> params) {
 		try {
-			if(!Utils.isNetworkAvailable(context)){
-				resultStr="NetWorkConnectException";
-			} 
+			Utils.isNetworkAvailable(context); 
 			HttpParams httpParameters = new BasicHttpParams();
 		    HttpConnectionParams.setConnectionTimeout(httpParameters, 2000);
 		    HttpConnectionParams.setSoTimeout(httpParameters, 2000);  
@@ -110,10 +108,7 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 	public static String GetByHttpClient(final Context context,final String url,final Map<String, String>fields){
 		
 		try {
-			if(!Utils.isNetworkAvailable(context)){
-				resultStr="NetWorkConnectException";;
-			}
-			
+			Utils.isNetworkAvailable(context);		
 			httpClient=new  DefaultHttpClient();
 			List<BasicNameValuePair>ListParams=new ArrayList<BasicNameValuePair>();
 				if (null != fields) {
