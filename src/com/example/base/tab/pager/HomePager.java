@@ -38,7 +38,7 @@ public class HomePager extends BasePager {
 	@Override
 	public void initViewData() {
 		ViewErrorState();
-		tvTitle.setText("JSON½âÎö");
+		tvTitle.setText("Ê×Ò³");
 		view = LayoutInflater.from(mActivity)
 				.inflate(R.layout.home_pager, null);
 		flContent.addView(view);

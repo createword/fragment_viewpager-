@@ -6,28 +6,32 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/read" >
+        android:layout_height="50dp"
+        android:background="#BED4F1" >
 
         <TextView
+            style="@style/BaseViewPagerTitleBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:text="返回" />
 
         <TextView
             android:id="@+id/base_title"
+            style="@style/BaseViewPagerTitleBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:padding="10dp"
             android:text="首页新闻" />
 
         <TextView
+            style="@style/BaseViewPagerTitleBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
             android:text="菜单" />
     </RelativeLayout>
     <!-- 内容填充区 -->
@@ -39,7 +43,8 @@
         android:layout_weight="1" >
     </FrameLayout>
     <!-- 状态显示填充区 -->
-    <FrameLayout
+
+    <FrameLayout
         android:id="@+id/pager_state_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"

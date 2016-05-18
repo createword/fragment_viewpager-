@@ -20,9 +20,9 @@ public class NewsPager extends BasePager {
 	@Override
 	public void initViewData() {
 		ViewErrorState();
-		tvTitle.setText("大白痴");
+		tvTitle.setText("分类");
 		TextView txtview = new TextView(mActivity);
-		txtview.setText("白央");
+		txtview.setText("一条街");
 		txtview.setGravity(Gravity.CENTER);
 		flContent.addView(txtview);
 	}
