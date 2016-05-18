@@ -76,6 +76,7 @@ public class ContentFragment extends BaseFragment {
 			}
 		});
 		ArryList.get(0).initData();// 初始化首页数据
+	
 	}
 
 

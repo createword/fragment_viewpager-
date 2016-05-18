@@ -32,27 +32,33 @@ public final class R {
         public static final int btn_style_alert_dialog_special_normal=0x7f020005;
         public static final int btn_style_alert_dialog_special_pressed=0x7f020006;
         public static final int ic_launcher=0x7f020007;
+        public static final int shape_dialog_bg=0x7f020008;
     }
     public static final class id {
-        public static final int _h1=0x7f09000a;
-        public static final int _h2=0x7f09000b;
-        public static final int _home=0x7f090009;
-        public static final int action_settings=0x7f09000c;
+        public static final int _h1=0x7f09000c;
+        public static final int _h2=0x7f09000d;
+        public static final int _home=0x7f09000b;
+        public static final int action_settings=0x7f09000f;
         public static final int base_title=0x7f090001;
+        public static final int btn_asy=0x7f090003;
         public static final int fl_content=0x7f090000;
-        public static final int group=0x7f090004;
-        public static final int noScrollViewPager1=0x7f090003;
+        public static final int group=0x7f090006;
+        public static final int menu=0x7f090004;
+        public static final int message=0x7f09000e;
+        public static final int noScrollViewPager1=0x7f090005;
         public static final int pager_content=0x7f090002;
-        public static final int radio_h1=0x7f090006;
-        public static final int radio_h2=0x7f090007;
-        public static final int radio_h3=0x7f090008;
-        public static final int radio_home=0x7f090005;
+        public static final int radio_h1=0x7f090008;
+        public static final int radio_h2=0x7f090009;
+        public static final int radio_h3=0x7f09000a;
+        public static final int radio_home=0x7f090007;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int base_pager=0x7f030001;
-        public static final int item=0x7f030002;
-        public static final int popupwindow=0x7f030003;
+        public static final int home_pager=0x7f030002;
+        public static final int item=0x7f030003;
+        public static final int popupwindow=0x7f030004;
+        public static final int progress_dialog=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -89,6 +95,9 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
+        /**  对话框主题 
+         */
+        public static final int DialogTheme=0x7f070003;
         public static final int Pub_TabStyle=0x7f070002;
     }
 }

@@ -39,7 +39,8 @@ public class BasePager {
 	 * 初始化数据
 	 */
 	public void initData() {
-
+		
 	}
+	
 
 }
