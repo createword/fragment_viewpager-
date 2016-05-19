@@ -48,16 +48,16 @@ public class DoHttpAsyn extends AsyncTask<Object, Void, String> {
 	@SuppressWarnings("unused")
 	@Override
 	protected void onPostExecute(String res) {
+		JSONObject result = null;
 		try {
 			ConverErrorMessageShow(res);
-			JSONObject result = new JSONObject(res);
+			result = new JSONObject(res);
 			if (result == null) {
 				bInterface.dataError();
 			} else {
 				bInterface.darSuccess(result);
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (dialog.isShowing()) {
@@ -73,7 +73,7 @@ public class DoHttpAsyn extends AsyncTask<Object, Void, String> {
 	 * @return
 	 */
 	public void ConverErrorMessageShow(String msg) {
-		if (msg.contains("time out")) {
+		if (msg.contains("timed out")) { //当请求Ip不正确时会超时 请检查请求地址是否正确
 			Utils.ToastShort(context, Constants.ERROR_NETWORK_TIMEOUT);
 		} else if (msg.contains("refused")) {
 			Utils.ToastShort(context, Constants.ERROR_NETWORKEXCEPTION);

@@ -72,6 +72,8 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 					//取返回的字符串
 					resultStr=EntityUtils.toString(httpResponse.getEntity(),HTTP.UTF_8);	
 				}
+				//注意打印要在try里写 有一种情况 ：当请求服务器超时时code=null  如果写在外面会null指针
+				System.out.println("StateCode:"+httpResponse.getStatusLine().getStatusCode()+":返回结果StrResult"+resultStr);
 
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
@@ -93,8 +95,7 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 			}
 			
 		}
-  System.out.println("StateCode:"+httpResponse.getStatusLine().getStatusCode()+":返回结果StrResult"+resultStr);
-		return resultStr;
+  		return resultStr;
 
 	}
 	/**
@@ -122,7 +123,8 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
                     HttpEntity entity = httpResponse.getEntity();
                     resultStr = EntityUtils.toString(entity, "utf-8");  
                 }
-			 
+			    System.out.println("StateCode:"+httpResponse.getStatusLine().getStatusCode()+":返回结果StrResult"+resultStr);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			resultStr="错误:"+e.getMessage();
@@ -131,8 +133,7 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 				httpClient.getConnectionManager().shutdown();
 			}
 		}
-        System.out.println("服务器返回结果StrResult"+resultStr);
-	   return resultStr;
+       return resultStr;
 		
 	}
 
