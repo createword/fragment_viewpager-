@@ -25,8 +25,8 @@
         <item name="android:drawablePadding">1dp</item>
         <item name="android:padding">1dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textSize">14dp</item>
-        <item name="android:textColor">#CDCDCD</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">#625849</item>
         <item name="android:gravity">center</item>
     </style>
     <!-- BaseViewPager_title 导航 -->

@@ -1,4 +1,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
  <color name="read">#FFF0F5</color><!-- 淡紫红 -->
+  <color name="blue">#C0D5F2</color><!-- 浅蓝 -->
+  <color name="fenread">#FAB3E2</color><!-- 粉红 -->
+  <color name="green">#58FD98</color><!-- 绿色 -->
 </resources>

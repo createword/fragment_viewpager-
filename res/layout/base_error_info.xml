@@ -6,8 +6,10 @@
     android:orientation="vertical" >
 
     <TextView
+        android:drawablePadding="10dp"
+        android:drawableTop="@drawable/wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="走神了,网络断开了" />
+        android:text="网络已断开,请重新连接" />
 
 </LinearLayout>

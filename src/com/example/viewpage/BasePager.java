@@ -1,6 +1,6 @@
 package com.example.viewpage;
 
-import com.example.base.httputils.Utils;
+import com.example.base.utils.Utils;
 import com.example.exception.ConnectException;
 import com.example.frag.R;
 
@@ -20,6 +20,7 @@ public  class BasePager {
 	public Activity mActivity;
 	public View mRootView;// 布局对象
 
+	public TextView base_left;//标题左边
 	public TextView tvTitle;// 标题对象
 
 	public FrameLayout flContent;// 内容
@@ -37,6 +38,8 @@ public  class BasePager {
 	 */
 	public void initViews() {
 		mRootView = View.inflate(mActivity, R.layout.base_pager, null);
+		
+		base_left = (TextView) mRootView.findViewById(R.id.base_left);
 		tvTitle = (TextView) mRootView.findViewById(R.id.base_title);
 		flContent = (FrameLayout) mRootView.findViewById(R.id.pager_content);
 		StateMainLayout=(FrameLayout) mRootView.findViewById(R.id.pager_state_content);
@@ -55,7 +58,7 @@ public  class BasePager {
 	 * 状态页面 调用时一定要在initData里初始化 当网络连接时显示内容没连接显示连接异常
 	 */
 
-	public void ViewErrorState() {
+	public void ViewIsNetWorkState() {
 		try {
 			if (Utils.isNetworkAvailable(mActivity)) {
 				flContent.setVisibility(View.VISIBLE);

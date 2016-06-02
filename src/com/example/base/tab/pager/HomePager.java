@@ -6,6 +6,7 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
@@ -15,19 +16,20 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.activity.SelectSchool_Activity;
 import com.example.analysis.AtestCase;
 import com.example.analysis.BaseAsyTaskInterface;
-import com.example.base.httputils.AppCustomDialog;
-import com.example.base.httputils.DoHttpAsyn;
-import com.example.base.httputils.HttpUtils;
-import com.example.base.httputils.IpUtils;
-import com.example.base.httputils.LogUtils;
-import com.example.base.httputils.Utils;
+import com.example.base.utils.AppCustomDialog;
+import com.example.base.utils.DoHttpAsyn;
+import com.example.base.utils.HttpUtils;
+import com.example.base.utils.IpUtils;
+import com.example.base.utils.LogUtils;
+import com.example.base.utils.Utils;
 import com.example.frag.R;
 import com.example.viewpage.BasePager;
 
-public class HomePager extends BasePager {
-	View view;
+public class HomePager extends BasePager implements OnClickListener {
+
 	private TextView text;
 	private AtestCase casenew = new AtestCase();
 
@@ -37,40 +39,22 @@ public class HomePager extends BasePager {
 
 	@Override
 	public void initViewData() {
-		ViewErrorState();
+		ViewIsNetWorkState();
+		base_left.setText("所有学校");
 		tvTitle.setText("首页");
-		view = LayoutInflater.from(mActivity)
-				.inflate(R.layout.home_pager, null);
-		flContent.addView(view);
-		text = (TextView) view.findViewById(R.id.menu);
-		view.findViewById(R.id.btn_asy).setOnClickListener(
-				new OnClickListener() {
-					@SuppressWarnings("unchecked")
-					public void onClick(View v) {
-						final String url = IpUtils.MainIpServer
-								+ "/webServlet/student";
-						final Map<String, String> params = new HashMap<String, String>();
-						params.put("name", "xiaoming");
-						params.put("age", "12");
-
-						new DoHttpAsyn(mActivity,
-								new BaseAsyTaskInterface() {
-									public void darSuccess(JSONObject result) {
-										for (String str : casenew
-												.getArrayList(result)) {
-											text.setText(str);
-										}
-                             
-									}
-									public void dataError() {
-
-									}
-								
-								
-								}).execute( url,params);
-
-					}
-				});
+		base_left.setOnClickListener(this);
 	}
 
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.base_left:
+        Intent in=new Intent(mActivity,SelectSchool_Activity.class);
+        mActivity.startActivity(in);
+			break;
+
+		default:
+			break;
+		}
+
+	}
 }

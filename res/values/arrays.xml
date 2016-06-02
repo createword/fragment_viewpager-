@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="navigate">
+        <item>1|北京</item>
+        <item>2|上海</item>
+        <item>3|广东</item>
+        <item>4|济南</item>
+   
+    </string-array>
+</resources>

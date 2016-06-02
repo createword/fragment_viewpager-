@@ -33,7 +33,7 @@ public abstract class BaseFragment extends Fragment {
 		return initViews();
 	}
 
-	// 依附的activity创建完成
+	// 依附的activity创建完成 当Activity中的onCreate方法执行完后调用
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);

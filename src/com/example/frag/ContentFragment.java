@@ -25,7 +25,7 @@ public class ContentFragment extends BaseFragment {
 
 	@Override
 	public View initViews() {
-		View view = View.inflate(mActivity, R.layout.item, null);
+		View view = View.inflate(mActivity, R.layout.activity_main, null);
 		// rgGroup = (RadioGroup) view.findViewById(R.id.rg_group);
 		rg = (RadioGroup) view.findViewById(R.id.group);
 		vp = (ViewPager) view.findViewById(R.id.noScrollViewPager1);

@@ -1,32 +1,72 @@
 package com.example.base.tab.pager;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.example.base.httputils.AppCustomDialog;
-import com.example.base.httputils.Constants;
-import com.example.base.httputils.Utils;
+import com.example.analysis.AtestCase;
+import com.example.analysis.BaseAsyTaskInterface;
+import com.example.base.utils.AppCustomDialog;
+import com.example.base.utils.Constants;
+import com.example.base.utils.DoHttpAsyn;
+import com.example.base.utils.IpUtils;
+import com.example.base.utils.Utils;
 import com.example.exception.ConnectException;
+import com.example.frag.R;
 import com.example.viewpage.BasePager;
 
 public class NewsPager extends BasePager {
 
+	View view;
+	private TextView text;
+	private AtestCase casenew = new AtestCase();
+
 	public NewsPager(Activity activity) {
 		super(activity);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initViewData() {
-		ViewErrorState();
-		tvTitle.setText("分类");
-		TextView txtview = new TextView(mActivity);
-		txtview.setText("一条街");
-		txtview.setGravity(Gravity.CENTER);
-		flContent.addView(txtview);
+		ViewIsNetWorkState();
+		base_left.setText("所有学校");
+		tvTitle.setText("首页");
+		view = LayoutInflater.from(mActivity)
+				.inflate(R.layout.news_pager, null);
+		flContent.addView(view);
+		text = (TextView) view.findViewById(R.id.menu);
+		view.findViewById(R.id.btn_asy).setOnClickListener(
+				new OnClickListener() {
+					@SuppressWarnings("unchecked")
+					public void onClick(View v) {
+						final String url = IpUtils.MainIpServer
+								+ "/blog/test";
+						final Map<String, String> params = new HashMap<String, String>();
+						params.put("id", "1");
+						new DoHttpAsyn(mActivity,
+								new BaseAsyTaskInterface() {
+									public void darSuccess(JSONObject result) {
+										for (String[] str : casenew.getArrayList(result)) {
+											text.setText(str[0]+str[1]);
+										}
+                             
+									}
+									public void dataError(String msg) {
+
+									}
+								
+								
+								}).execute( url,params);
+
+					}
+				});
 	}
-
-
 	
 }
