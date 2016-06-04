@@ -19,7 +19,10 @@ import com.example.base.utils.Utils;
 import com.example.frag.R;
 import com.example.modle.Category;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
@@ -27,6 +30,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
@@ -42,6 +46,7 @@ public class SelectSchool_Activity extends BaseActivity implements
 			+ "/yitiaojie/SelectProvinceJson?";
 	private String cid = "1";
 
+	@SuppressLint("ResourceAsColor")
 	@Override
 	public void initView() {
 		act_base_title.setText("Ñ§Ð£Ñ¡Ôñ");
@@ -51,6 +56,7 @@ public class SelectSchool_Activity extends BaseActivity implements
 		provinceListView = (ListView) findViewById(R.id.province);
 		schoolListView = (ListView) findViewById(R.id.school);
 
+		
 	}
 
 	@Override
@@ -86,11 +92,14 @@ public class SelectSchool_Activity extends BaseActivity implements
 			params.put("pid", Integer.toString(position + 1));
 			new DoHttpAsyn(SelectSchool_Activity.this,
 					SelectSchool_Activity.this).execute(url, params);
+		         	
 			if (Sadapter == null) {
 				return;
 			} else {
 				Sadapter.notifyDataSetInvalidated();
+
 			}
+	
 
 		}
 
@@ -106,7 +115,7 @@ public class SelectSchool_Activity extends BaseActivity implements
 		Sadapter = new SelectSchoolAdapter(SelectSchool_Activity.this,
 				arrySchool, StringUtil.String2Int(cid));
 		schoolListView.setAdapter(Sadapter);
-
+		
 		Sadapter.notifyDataSetInvalidated();
 
 	}

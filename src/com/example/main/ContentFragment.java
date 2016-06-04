@@ -1,11 +1,12 @@
-package com.example.frag;
+package com.example.main;
 
 import java.util.ArrayList;
 
 import com.example.base.tab.pager.HomePager;
+import com.example.base.tab.pager.LoginPager;
 import com.example.base.tab.pager.NewsPager;
+import com.example.frag.R;
 import com.example.viewpage.BasePager;
-
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -21,7 +22,6 @@ public class ContentFragment extends BaseFragment {
 	private RadioGroup rg;
 	private ViewPager vp;
 	private ArrayList<BasePager> ArryList;
-	
 
 	@Override
 	public View initViews() {
@@ -36,7 +36,8 @@ public class ContentFragment extends BaseFragment {
 	public void initData() {
 		ArryList = new ArrayList<BasePager>();
 		ArryList.add(new HomePager(mActivity));
-		ArryList.add(new NewsPager(mActivity));
+		//ArryList.add(new NewsPager(mActivity));
+		ArryList.add(new LoginPager(mActivity));
 		vp.setAdapter(new BasePagerAdapter());
 
 		rg.check(R.id.radio_home);// 默认勾选首页
@@ -50,10 +51,11 @@ public class ContentFragment extends BaseFragment {
 					vp.setCurrentItem(1, false);// 去掉切换页面的动画
 					break;
 				case R.id.radio_h2:
-					vp.setCurrentItem(0, false);// 去掉切换页面的动画
+					vp.setCurrentItem(2, false);// 去掉切换页面的动画
 					break;
 				case R.id.radio_h3:
-					vp.setCurrentItem(1, false);// 去掉切换页面的动画
+
+					vp.setCurrentItem(3, false);// 去掉切换页面的动画
 					break;
 				default:
 					break;
@@ -64,7 +66,7 @@ public class ContentFragment extends BaseFragment {
 		vp.setOnPageChangeListener(new OnPageChangeListener() {
 			public void onPageSelected(int position) {
 
-				ArryList.get(position).initViewData();// 获取当前被选中的页面, 初始化该页面数据
+				ArryList.get(position).CustomOnCreate();// 获取当前被选中的页面, 初始化该页面数据
 			}
 
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
@@ -75,32 +77,29 @@ public class ContentFragment extends BaseFragment {
 
 			}
 		});
-		ArryList.get(0).initViewData();// 初始化首页数据
-	
-	}
+		ArryList.get(0).CustomOnCreate();// 初始化首页数据
 
+	}
 
 	class BasePagerAdapter extends PagerAdapter {
 
-		
 		public int getCount() {
 			return ArryList.size();
 		}
 
-		
 		public boolean isViewFromObject(View arg0, Object arg1) {
 			return arg0 == arg1;
 		}
 
-		
 		public Object instantiateItem(ViewGroup container, int position) {
 			BasePager pager = ArryList.get(position);
+		
 			container.addView(pager.mRootView);
 			// pager.initData();// 初始化数据.... 不要放在此处初始化数据, 否则会预加载下一个页面
+		
 			return pager.mRootView;
 		}
 
-		
 		public void destroyItem(ViewGroup container, int position, Object object) {
 			container.removeView((View) object);
 		}

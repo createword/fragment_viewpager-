@@ -10,13 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public abstract class BaseActivity extends Activity {
 	public TextView act_base_title;
 	public FrameLayout act_content;
 	public FrameLayout act_state_content;
-
+	public RelativeLayout rel_Title_Bar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -31,6 +32,7 @@ public abstract class BaseActivity extends Activity {
 		act_base_title = (TextView) findViewById(R.id.act_base_title);
 		act_content = (FrameLayout) findViewById(R.id.act_content);
 		act_state_content = (FrameLayout) findViewById(R.id.act_state_content);
+		rel_Title_Bar = (RelativeLayout) findViewById(R.id.relTitleBar);
 	}
 	public abstract void initView();
 	public abstract void initData();

@@ -34,13 +34,19 @@ public class NewsPager extends BasePager {
 	}
 
 	@Override
-	public void initViewData() {
+	public void CustomOnCreate() {
 		ViewIsNetWorkState();
 		base_left.setText("所有学校");
 		tvTitle.setText("首页");
-		view = LayoutInflater.from(mActivity)
+	/*	view = LayoutInflater.from(mActivity)
 				.inflate(R.layout.news_pager, null);
-		flContent.addView(view);
+		flContent.addView(view);*/
+	//	initData();
+	}
+
+
+	public void initData() {
+		// TODO Auto-generated method stub
 		text = (TextView) view.findViewById(R.id.menu);
 		view.findViewById(R.id.btn_asy).setOnClickListener(
 				new OnClickListener() {
@@ -67,6 +73,12 @@ public class NewsPager extends BasePager {
 
 					}
 				});
+	}
+
+	@Override
+	public void initView() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

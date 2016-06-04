@@ -4,4 +4,9 @@
   <color name="blue">#C0D5F2</color><!-- 浅蓝 -->
   <color name="fenread">#FAB3E2</color><!-- 粉红 -->
   <color name="green">#58FD98</color><!-- 绿色 -->
+  <color name="white">#ECECEC</color><!-- 白色 -->
+  <color name="gray">#DFE0E0</color><!-- 灰色 -->
+  <color name="bg_e3">#E3E4E6</color>
+  <color name="bg_weihei">#515151</color><!-- 微黑色 -->
+  <color name="nai_white">#FFFFFF</color>
 </resources>

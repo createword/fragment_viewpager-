@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.frag.R;
 import com.example.modle.Category;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.TextView;
  * @author WINTER
  *
  */
+@SuppressLint("ResourceAsColor")
 public class SelectProAdapter extends BaseAdapter {
 
 	private Context context;
@@ -50,12 +52,12 @@ public class SelectProAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = layoutInflater.inflate(R.layout.item_ada_text, null);
 			viewHolder = new ViewHolder();
-			viewHolder.textView = (TextView) convertView
-					.findViewById(R.id.provincename);
+			viewHolder.textView = (TextView) convertView.findViewById(R.id.provincename);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
+	
 		viewHolder.textView.setText(categoriesList.get(position).get("category_title").getMprovince());
 
 		return convertView;

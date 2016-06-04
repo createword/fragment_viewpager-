@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="navigate">
         <item>1|北京</item>
         <item>2|上海</item>
         <item>3|广东</item>
         <item>4|济南</item>
-   
+        <item>5|重庆</item>
+        <item>6|天津</item>
+        <item>7|四川</item>
+        <item>8|山东</item>
+        <item>9|浙江</item>
+        <item>10|陕西</item>
+        <item>11|云南</item>
+        <item>12|湖南</item>
+        <item>13|宁夏</item>
+        <item>14|贵州</item>
+        <item>15|福建</item>
+        <item>16|辽宁</item>
+        <item>17|安徽</item>
+        <item>18|海南</item>
+        <item>19|台湾</item>
     </string-array>
+
 </resources>

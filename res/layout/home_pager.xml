@@ -4,26 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/btn_asy"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E1FBCC"
-        android:text="json解析"
-        android:textColor="#FFFFFF"
-        android:textSize="16dp" />
+        android:layout_height="wrap_content" >
 
-    <TextView
-        
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="数据显示：" />
-
-    <TextView
-        android:id="@+id/menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp" />
+        <ListView
+            android:id="@+id/home_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>
