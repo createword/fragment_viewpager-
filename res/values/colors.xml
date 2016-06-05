@@ -9,4 +9,7 @@
   <color name="bg_e3">#E3E4E6</color>
   <color name="bg_weihei">#515151</color><!-- 微黑色 -->
   <color name="nai_white">#FFFFFF</color>
+  <color name="line">#ffd3dde6</color>
+  <color name="griditems_bg">#ffe8ecef</color>
+  <color name="commo_text_color">#ff333333</color>
 </resources>

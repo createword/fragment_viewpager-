@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.example.base.tab.pager.HomePager;
 import com.example.base.tab.pager.LoginPager;
 import com.example.base.tab.pager.NewsPager;
+import com.example.base.tab.pager.classifyPager;
 import com.example.frag.R;
 import com.example.viewpage.BasePager;
 
@@ -37,6 +38,7 @@ public class ContentFragment extends BaseFragment {
 		ArryList = new ArrayList<BasePager>();
 		ArryList.add(new HomePager(mActivity));
 		//ArryList.add(new NewsPager(mActivity));
+		ArryList.add(new classifyPager(mActivity));
 		ArryList.add(new LoginPager(mActivity));
 		vp.setAdapter(new BasePagerAdapter());
 
