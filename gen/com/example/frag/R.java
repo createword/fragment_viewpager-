@@ -85,13 +85,14 @@ public final class R {
         public static final int wifi=0x7f02001e;
     }
     public static final class id {
+        public static final int OkButton_id=0x7f0a0020;
         public static final int act_base_title=0x7f0a000b;
         public static final int act_content=0x7f0a000c;
         public static final int act_state_content=0x7f0a000d;
-        public static final int action_settings=0x7f0a0021;
+        public static final int action_settings=0x7f0a0024;
         public static final int base_left=0x7f0a000e;
         public static final int base_title=0x7f0a000f;
-        public static final int btn_asy=0x7f0a001e;
+        public static final int btn_asy=0x7f0a0021;
         public static final int fl_content=0x7f0a0001;
         public static final int grid_view=0x7f0a0014;
         public static final int group=0x7f0a0003;
@@ -101,12 +102,13 @@ public final class R {
         public static final int home_text_school=0x7f0a0019;
         public static final int home_text_u=0x7f0a0018;
         public static final int iv_item=0x7f0a0012;
-        public static final int menu=0x7f0a001f;
-        public static final int message=0x7f0a0020;
+        public static final int menu=0x7f0a0022;
+        public static final int message=0x7f0a0023;
         public static final int noScrollViewPager1=0x7f0a0002;
         public static final int pager_content=0x7f0a0010;
         public static final int pager_state_content=0x7f0a0011;
-        public static final int passframe=0x7f0a001d;
+        public static final int passEdit_id=0x7f0a001f;
+        public static final int passframe=0x7f0a001e;
         public static final int province=0x7f0a0008;
         public static final int provincename=0x7f0a001b;
         public static final int radio_h1=0x7f0a0005;
@@ -117,6 +119,7 @@ public final class R {
         public static final int relTitleBar=0x7f0a000a;
         public static final int school=0x7f0a0009;
         public static final int tv_item=0x7f0a0013;
+        public static final int userEdit_id=0x7f0a001d;
         public static final int userframe=0x7f0a001c;
         public static final int vp_guide=0x7f0a0000;
     }

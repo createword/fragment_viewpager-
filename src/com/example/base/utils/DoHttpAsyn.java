@@ -65,28 +65,33 @@ public class DoHttpAsyn extends AsyncTask<Object, Void, String> {
 	 */
 	public void ConverErrorMessageShow(String res) {
 		JSONObject result = null;
-		if (res.contains("timed out")) { // 当请求Ip不正确时会超时 请检查请求地址是否正确
-			Utils.ToastShort(context, Constants.ERROR_NETWORK_TIMEOUT);
+		if(res!=null){//res当服务器不向客户端返回任何结果是则为null
+			if (res.contains("timed out")) { // 当请求Ip不正确时会超时 请检查请求地址是否正确
+				Utils.ToastShort(context, Constants.ERROR_NETWORK_TIMEOUT);
 
-		} else if (res.contains("refused")) {
-			Utils.ToastShort(context, Constants.ERROR_NETWORKEXCEPTION);
+			} else if (res.contains("refused")) {
+				Utils.ToastShort(context, Constants.ERROR_NETWORKEXCEPTION);
 
-		} else if (res.contains("NetWorkConnectException")) {
-			Utils.ToastShort(context, Constants.ERROR_NOAVAIABLE_NETWORK);
+			} else if (res.contains("NetWorkConnectException")) {
+				Utils.ToastShort(context, Constants.ERROR_NOAVAIABLE_NETWORK);
 
-		} else {
-			try {
-				result = new JSONObject(res);
-				System.out.println("json解析参数-->" + result);
-				bInterface.darSuccess(result);
+			} else {
+				try {
+					result = new JSONObject(res);
+					System.out.println("json解析参数-->" + result);
+					bInterface.darSuccess(result);
 
-			} catch (JSONException e) {
-				e.printStackTrace();
-				if (result == null) {
-					bInterface.dataError("JsonResult为空解析失败");
+				} catch (JSONException e) {
+					e.printStackTrace();
+					if (result == null) {
+						bInterface.dataError("JsonResult为空解析失败");
+					}
+
 				}
-
 			}
+		}else{
+			return ;
 		}
+		
 	}
 }

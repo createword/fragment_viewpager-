@@ -57,7 +57,7 @@ public class ContentFragment extends BaseFragment {
 					break;
 				case R.id.radio_h3:
 
-					vp.setCurrentItem(3, false);// 去掉切换页面的动画
+					vp.setCurrentItem(0, false);// 去掉切换页面的动画
 					break;
 				default:
 					break;

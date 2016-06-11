@@ -16,6 +16,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +36,7 @@ import com.example.base.utils.Utils;
 import com.example.frag.R;
 import com.example.viewpage.BasePager;
 
-public class HomePager extends BasePager implements OnClickListener,OnRefreshListener {
+public class HomePager extends BasePager implements OnClickListener,OnRefreshListener,OnItemClickListener {
 	private TextView text;
 	private ListView homListView;
 	private View view;
@@ -67,6 +69,7 @@ public class HomePager extends BasePager implements OnClickListener,OnRefreshLis
 		
 		base_left.setOnClickListener(this);
 		homListView.setAdapter(new HomeAdapter(mActivity, strs));
+		homListView.setOnItemClickListener(this);
 		refresh_layout.setOnRefreshListener(this);
 	}
 
@@ -86,6 +89,11 @@ public class HomePager extends BasePager implements OnClickListener,OnRefreshLis
 	public void onRefresh() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+	
+		Utils.ToastShort(mActivity, position+"");
 	}
 
 

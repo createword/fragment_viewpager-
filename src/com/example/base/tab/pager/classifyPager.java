@@ -15,15 +15,13 @@ private View view;
 private MyGridView myGridView;
 	public classifyPager(Activity activity) {
 		super(activity);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initView() {
 		ViewIsNetWorkState();
 		base_left.setText("·µ»Ø");
-	
-		tvTitle.setText("·ÖÀà");
+		tvTitle.setVisibility(View.GONE);
 		view = LayoutInflater.from(mActivity)
 				.inflate(R.layout.gridview_main, null);
 		myGridView=	(MyGridView) view.findViewById(R.id.grid_view);
@@ -34,13 +32,7 @@ private MyGridView myGridView;
 	public void initData() {
 		
 		myGridView.setAdapter(new MyGridAdapter(mActivity));
-		base_left.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				mActivity.finish();
-			}
-		});
+		
 	}
 
 }
