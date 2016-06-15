@@ -87,7 +87,6 @@ public class HomePager extends BasePager implements OnClickListener,OnRefreshLis
 	}
 
 	public void onRefresh() {
-		// TODO Auto-generated method stub
 		
 	}
 

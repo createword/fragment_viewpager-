@@ -1,6 +1,6 @@
 package com.example.modle;
 
-public class Category {
+public class CategoryModel {
 	private int cid;
 	private String Mprovince;
 
@@ -20,7 +20,7 @@ public class Category {
 		Mprovince = mprovince;
 	}
 
-	public Category(int cid, String title) {
+	public CategoryModel(int cid, String title) {
 		this.cid = cid;
 		this.Mprovince = title;
 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.example.frag.R;
-import com.example.modle.Category;
+import com.example.modle.CategoryModel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,8 +24,8 @@ public class SelectProAdapter extends BaseAdapter {
 
 	private Context context;
 	private LayoutInflater layoutInflater;
-	private List<HashMap<String,Category>> categoriesList;
-	public SelectProAdapter(Context context,List<HashMap<String, Category>> categoriesList) {
+	private List<HashMap<String,CategoryModel>> categoriesList;
+	public SelectProAdapter(Context context,List<HashMap<String, CategoryModel>> categoriesList) {
 		this.context = context;
 		this.categoriesList = categoriesList;
 		layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

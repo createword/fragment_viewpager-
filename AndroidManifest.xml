@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.activity.SelectSchool_Activity" />
-        <activity android:name="com.example.main.MainActivity" />
+        <activity android:name="com.example.main.MainActivity" android:windowSoftInputMode="adjustPan|stateHidden"/>
     </application>
 
 </manifest>

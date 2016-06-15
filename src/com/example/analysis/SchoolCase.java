@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.base.utils.Utils;
-import com.example.modle.Category;
+import com.example.modle.CategoryModel;
 
 public class SchoolCase {
 	private ArrayList<String> listString;
