@@ -12,6 +12,25 @@ public final class R {
         public static final int navigate=0x7f040000;
     }
     public static final class attr {
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int border_color=0x7f010001;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int border_width=0x7f010000;
     }
     public static final class color {
         /**  灰色 
@@ -40,6 +59,7 @@ public final class R {
         /**  绿色 
          */
         public static final int white=0x7f050004;
+        public static final int yellow=0x7f05000c;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -61,53 +81,58 @@ public final class R {
         public static final int app_phonecharge=0x7f020006;
         public static final int app_plane=0x7f020007;
         public static final int app_transfer=0x7f020008;
-        public static final int bg_gv=0x7f020009;
-        public static final int btn_classify_style=0x7f02000a;
-        public static final int btn_home_style=0x7f02000b;
-        public static final int btn_issue_style=0x7f02000c;
-        public static final int btn_person_style=0x7f02000d;
-        public static final int button_loginok=0x7f02000e;
-        public static final int button_loginok_circle=0x7f02000f;
-        public static final int ic_launcher=0x7f020010;
-        public static final int l_head=0x7f020011;
-        public static final int l_pass=0x7f020012;
-        public static final int nav_menu_category=0x7f020013;
-        public static final int nav_menu_category_active=0x7f020014;
-        public static final int nav_menu_home=0x7f020015;
-        public static final int nav_menu_home_selected=0x7f020016;
-        public static final int nav_menu_hot=0x7f020017;
-        public static final int nav_menu_hot_selected=0x7f020018;
-        public static final int nav_menu_like=0x7f020019;
-        public static final int nav_menu_like_active=0x7f02001a;
-        public static final int nav_menu_me=0x7f02001b;
-        public static final int nav_menu_me_selected=0x7f02001c;
-        public static final int rightjiantou=0x7f02001d;
-        public static final int shangpin=0x7f02001e;
-        public static final int shape_dialog_bg=0x7f02001f;
-        public static final int shouquanmm=0x7f020020;
-        public static final int shouquanqq=0x7f020021;
-        public static final int shouquanwb=0x7f020022;
-        public static final int show=0x7f020023;
-        public static final int wifi=0x7f020024;
+        public static final int arrow_right_2=0x7f020009;
+        public static final int bg_gv=0x7f02000a;
+        public static final int btn_classify_style=0x7f02000b;
+        public static final int btn_home_style=0x7f02000c;
+        public static final int btn_issue_style=0x7f02000d;
+        public static final int btn_person_style=0x7f02000e;
+        public static final int button_loginok=0x7f02000f;
+        public static final int button_loginok_circle=0x7f020010;
+        public static final int head=0x7f020011;
+        public static final int ic_launcher=0x7f020012;
+        public static final int l_head=0x7f020013;
+        public static final int l_pass=0x7f020014;
+        public static final int nav_menu_category=0x7f020015;
+        public static final int nav_menu_category_active=0x7f020016;
+        public static final int nav_menu_home=0x7f020017;
+        public static final int nav_menu_home_selected=0x7f020018;
+        public static final int nav_menu_hot=0x7f020019;
+        public static final int nav_menu_hot_selected=0x7f02001a;
+        public static final int nav_menu_like=0x7f02001b;
+        public static final int nav_menu_like_active=0x7f02001c;
+        public static final int nav_menu_me=0x7f02001d;
+        public static final int nav_menu_me_selected=0x7f02001e;
+        public static final int rightjiantou=0x7f02001f;
+        public static final int shangpin=0x7f020020;
+        public static final int shape_dialog_bg=0x7f020021;
+        public static final int shouquanmm=0x7f020022;
+        public static final int shouquanqq=0x7f020023;
+        public static final int shouquanwb=0x7f020024;
+        public static final int show=0x7f020025;
+        public static final int wifi=0x7f020026;
     }
     public static final class id {
         public static final int OkButton_id=0x7f0a0020;
         public static final int act_base_title=0x7f0a000b;
         public static final int act_content=0x7f0a000c;
         public static final int act_state_content=0x7f0a000d;
-        public static final int action_settings=0x7f0a0025;
+        public static final int action_settings=0x7f0a0028;
         public static final int base_left=0x7f0a000e;
         public static final int base_title=0x7f0a000f;
         public static final int btn_asy=0x7f0a0022;
+        public static final int child=0x7f0a0027;
         public static final int fl_content=0x7f0a0001;
         public static final int grid_view=0x7f0a0014;
         public static final int group=0x7f0a0003;
+        public static final int headpic=0x7f0a0026;
         public static final int home_img_u=0x7f0a0017;
         public static final int home_listview=0x7f0a0016;
         public static final int home_sale_ware=0x7f0a001a;
         public static final int home_text_school=0x7f0a0019;
         public static final int home_text_u=0x7f0a0018;
         public static final int iv_item=0x7f0a0012;
+        public static final int lin_login_id=0x7f0a0025;
         public static final int menu=0x7f0a0023;
         public static final int message=0x7f0a0024;
         public static final int noScrollViewPager1=0x7f0a0002;
@@ -146,6 +171,7 @@ public final class R {
         public static final int login_activity=0x7f03000c;
         public static final int news_pager=0x7f03000d;
         public static final int progress_dialog=0x7f03000e;
+        public static final int setting_pager=0x7f03000f;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -201,4 +227,52 @@ public final class R {
          */
         public static final int userEditStyle=0x7f080005;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a CircleImageView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CircleImageView_border_color com.example.frag:border_color}</code></td><td></td></tr>
+           <tr><td><code>{@link #CircleImageView_border_width com.example.frag:border_width}</code></td><td></td></tr>
+           </table>
+           @see #CircleImageView_border_color
+           @see #CircleImageView_border_width
+         */
+        public static final int[] CircleImageView = {
+            0x7f010000, 0x7f010001
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.frag.R.attr#border_color}
+          attribute's value can be found in the {@link #CircleImageView} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.frag:border_color
+        */
+        public static final int CircleImageView_border_color = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.example.frag.R.attr#border_width}
+          attribute's value can be found in the {@link #CircleImageView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.frag:border_width
+        */
+        public static final int CircleImageView_border_width = 0;
+    };
 }

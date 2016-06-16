@@ -1,14 +1,17 @@
 package com.example.main;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import com.example.base.tab.pager.HomePager;
-import com.example.base.tab.pager.LoginPager;
 import com.example.base.tab.pager.NewsPager;
-import com.example.base.tab.pager.classifyPager;
+import com.example.base.tab.pager.SettingPager;
+import com.example.base.tab.pager.ClassifyPager;
+import com.example.base.utils.Utils;
 import com.example.frag.R;
 import com.example.viewpage.BasePager;
 
+import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -23,6 +26,8 @@ public class ContentFragment extends BaseFragment {
 	private RadioGroup rg;
 	private ViewPager vp;
 	private ArrayList<BasePager> ArryList;
+	BasePagerAdapter bAdapter;
+	private int intnumber;
 
 	@Override
 	public View initViews() {
@@ -37,12 +42,15 @@ public class ContentFragment extends BaseFragment {
 	public void initData() {
 		ArryList = new ArrayList<BasePager>();
 		ArryList.add(new HomePager(mActivity));
-		//ArryList.add(new NewsPager(mActivity));
-		ArryList.add(new classifyPager(mActivity));
-		ArryList.add(new LoginPager(mActivity));
-		vp.setAdapter(new BasePagerAdapter());
+		// ArryList.add(new NewsPager(mActivity));
+		ArryList.add(new ClassifyPager(mActivity));
+		ArryList.add(new SettingPager(mActivity));
+		bAdapter = new BasePagerAdapter();
+
+		vp.setAdapter(bAdapter);
 
 		rg.check(R.id.radio_home);// 默认勾选首页
+
 		rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
@@ -58,6 +66,7 @@ public class ContentFragment extends BaseFragment {
 				case R.id.radio_h3:
 
 					vp.setCurrentItem(2, false);// 去掉切换页面的动画
+
 					break;
 				default:
 					break;
@@ -94,11 +103,11 @@ public class ContentFragment extends BaseFragment {
 		}
 
 		public Object instantiateItem(ViewGroup container, int position) {
+
 			BasePager pager = ArryList.get(position);
-		
 			container.addView(pager.mRootView);
 			// pager.initData();// 初始化数据.... 不要放在此处初始化数据, 否则会预加载下一个页面
-		
+
 			return pager.mRootView;
 		}
 

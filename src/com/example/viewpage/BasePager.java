@@ -5,6 +5,7 @@ import com.example.exception.ConnectException;
 import com.example.frag.R;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,15 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public abstract class BasePager {
+public abstract class BasePager extends View { //继承View 目的是在ContentFragemnt里getTag()也可以不继承
+
+	public BasePager(Context context) {
+		super(context);
+
+		mActivity = (Activity) context;
+		BaseinitViews();
+
+	}
 
 	public Activity mActivity;
 	public View mRootView;// 布局对象
@@ -28,11 +37,6 @@ public abstract class BasePager {
 	public ImageButton btnMenu;// 菜单按钮
 
 	public FrameLayout StateMainLayout;// 状态显示区
-
-	public BasePager(Activity activity) {
-		mActivity = activity;
-		BaseinitViews();
-	}
 
 	/**
 	 * 初始化布局

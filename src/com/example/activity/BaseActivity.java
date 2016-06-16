@@ -18,6 +18,7 @@ public abstract class BaseActivity extends Activity {
 	public FrameLayout act_content;
 	public FrameLayout act_state_content;
 	public RelativeLayout rel_Title_Bar;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -34,14 +35,15 @@ public abstract class BaseActivity extends Activity {
 		act_state_content = (FrameLayout) findViewById(R.id.act_state_content);
 		rel_Title_Bar = (RelativeLayout) findViewById(R.id.relTitleBar);
 	}
+
 	public abstract void initView();
+
 	public abstract void initData();
-
-	/**
-	 * 状态页面 调用时一定要在initData里初始化 当网络连接时显示内容没连接显示连接异常 state 0
-	 * 不许要截面数据写死在布局上不需要加载网络显示 1 反之
-	 */
-
+/**
+ * 
+ * @param v
+ * @param state
+ */
 	public void ViewIsNetWorkState(View v, int state) {
 		if (state == 0) {
 			act_content.addView(v);

@@ -47,6 +47,7 @@ public static String PostByHttpClient( Context context,  String url, Map<String,
 		try {
 			Utils.isNetworkAvailable(context); 
 			HttpParams httpParameters = new BasicHttpParams();
+			
 		    HttpConnectionParams.setConnectionTimeout(httpParameters, 5000);
 		    HttpConnectionParams.setSoTimeout(httpParameters, 5000);  
 			httpClient = new DefaultHttpClient(httpParameters);

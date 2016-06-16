@@ -11,11 +11,11 @@ import com.example.analysis.AUserLogin;
 import com.example.frag.R;
 import com.example.viewpage.BasePager;
 
-public class classifyPager extends BasePager {
+public class ClassifyPager extends BasePager {
 	private View view;
 	private MyGridView myGridView;
 
-	public classifyPager(Activity activity) {
+	public ClassifyPager(Activity activity) {
 		super(activity);
 	}
 
@@ -23,7 +23,7 @@ public class classifyPager extends BasePager {
 	public void initView() {
 		ViewIsNetWorkState();
 		base_left.setText("·µ»Ø");
-		tvTitle.setVisibility(View.GONE);
+		tvTitle.setText("·ÖÀà");
 		view = LayoutInflater.from(mActivity).inflate(R.layout.gridview_main,
 				null);
 		myGridView = (MyGridView) view.findViewById(R.id.grid_view);

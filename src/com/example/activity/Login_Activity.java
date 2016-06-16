@@ -1,12 +1,10 @@
-package com.example.base.tab.pager;
+package com.example.activity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +19,8 @@ import com.example.base.utils.DoHttpAsyn;
 import com.example.base.utils.IpUtils;
 import com.example.base.utils.Utils;
 import com.example.frag.R;
-import com.example.viewpage.BasePager;
 
-public class LoginPager extends BasePager implements OnClickListener {
+public class Login_Activity extends BaseActivity implements OnClickListener {
 	private EditText userEdit;
 	private EditText passEdit;
 	private Button btOk;
@@ -32,28 +29,20 @@ public class LoginPager extends BasePager implements OnClickListener {
 	private AUserLogin aUserLogin;
 	private Map<String, Object> mapArray;
 	private LinearLayout regist_;
-
-	public LoginPager(Activity activity) {
-		super(activity);
-
-	}
+	public static boolean isFlag = false;
 
 	@Override
 	public void initView() {
-		// ViewIsNetWorkState();
-		base_left.setVisibility(View.GONE);
-		tvTitle.setText("登陆");
-		flContent.addView(LayoutInflater.from(mActivity).inflate(
-				R.layout.login_activity, null));
-		userEdit = (EditText) mActivity.findViewById(R.id.userEdit_id);
-		passEdit = (EditText) mActivity.findViewById(R.id.passEdit_id);
-		btOk = (Button) mActivity.findViewById(R.id.OkButton_id);
-		regist_ = (LinearLayout) mActivity.findViewById(R.id.regist_id);
-
+		ViewIsNetWorkState(LayoutInflater.from(this).inflate(R.layout.login_activity, null), 0);
+		userEdit = (EditText) findViewById(R.id.userEdit_id);
+		passEdit = (EditText) findViewById(R.id.passEdit_id);
+		btOk = (Button) findViewById(R.id.OkButton_id);
+		regist_ = (LinearLayout) findViewById(R.id.regist_id);
 	}
 
 	@Override
 	public void initData() {
+		act_base_title.setText("登陆");
 		aUserLogin = new AUserLogin();
 		regist_.setOnClickListener(this);
 		btOk.setOnClickListener(this);
@@ -61,6 +50,7 @@ public class LoginPager extends BasePager implements OnClickListener {
 	}
 
 	public void onClick(View v) {
+
 		String username = userEdit.getText().toString().trim();
 		String password = passEdit.getText().toString().trim();
 		params = new HashMap<String, String>();
@@ -69,22 +59,24 @@ public class LoginPager extends BasePager implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.OkButton_id:
 			if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-				Utils.ToastShort(mActivity, "用户名和密码不能为空");
+				Utils.ToastShort(this, "用户名和密码不能为空");
 			} else {
-				new DoHttpAsyn(mActivity, new BaseAsyTaskInterface() {
+				new DoHttpAsyn(this, new BaseAsyTaskInterface() {
 
 					public void dataError(String msg) {
 						// TODO Auto-generated method stub
-						Utils.ToastShort(mActivity, msg);
+						Utils.ToastShort(Login_Activity.this, msg);
 					}
 
 					public void darSuccess(JSONObject result) {
 						mapArray = aUserLogin.setUserPara(result);
 						if ((Boolean) mapArray.get("isflag")) {
-							Utils.ToastShort(mActivity, "验证成功");
+							Utils.ToastShort(Login_Activity.this, "验证成功");
+					
+							Login_Activity.isFlag = true;
 						} else {
-							Utils.ToastShort(mActivity,
-									(String) mapArray.get("msg"));
+							Login_Activity.isFlag = false;
+							Utils.ToastShort(Login_Activity.this,(String) mapArray.get("msg"));
 						}
 
 					}
@@ -93,10 +85,13 @@ public class LoginPager extends BasePager implements OnClickListener {
 
 			break;
 		case R.id.regist_id:
-			Utils.ToastShort(mActivity, "此功能暂未开放...");
+			Utils.ToastShort(this, "此功能暂未开放...");
 			break;
 		default:
 			break;
 		}
+	
+		
 	}
+
 }
