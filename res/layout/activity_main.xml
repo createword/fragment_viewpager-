@@ -13,38 +13,36 @@
     </com.example.viewpage.NoScrollViewPager>
     <!-- 状态显示区 -->
 
-    <RadioGroup
-        android:id="@+id/group"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#C9D7F2"
         android:orientation="horizontal"
         android:padding="3dp" >
 
-        <RadioButton
-   
-            android:id="@+id/radio_home"
-            style="@style/Pub_TabStyle"
-            android:drawableTop="@drawable/btn_home_style"
-            android:text="市场" />
-
-        <RadioButton
+        <TextView
             android:id="@+id/radio_h1"
             style="@style/Pub_TabStyle"
-            android:drawableTop="@drawable/btn_classify_style"
-            android:text="分类" />
+            android:drawableTop="@drawable/nav_menu_home_selected"
+            android:text="市场" />
 
-        <RadioButton
+        <TextView
             android:id="@+id/radio_h2"
             style="@style/Pub_TabStyle"
-            android:drawableTop="@drawable/btn_issue_style"
-            android:text="发布" />
+            android:drawableTop="@drawable/nav_menu_like"
+            android:text="分类" />
 
-        <RadioButton
+        <TextView
             android:id="@+id/radio_h3"
             style="@style/Pub_TabStyle"
-            android:drawableTop="@drawable/btn_person_style"
+            android:drawableTop="@drawable/nav_menu_category"
+            android:text="发布" />
+
+        <TextView
+            android:id="@+id/radio_h4"
+            style="@style/Pub_TabStyle"
+            android:drawableTop="@drawable/nav_menu_me"
             android:text="我的" />
-    </RadioGroup>
+    </LinearLayout>
 
 </LinearLayout>

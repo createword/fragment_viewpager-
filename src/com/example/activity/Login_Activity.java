@@ -74,6 +74,7 @@ public class Login_Activity extends BaseActivity implements OnClickListener {
 							Utils.ToastShort(Login_Activity.this, "验证成功");
 					
 							Login_Activity.isFlag = true;
+							finish();
 						} else {
 							Login_Activity.isFlag = false;
 							Utils.ToastShort(Login_Activity.this,(String) mapArray.get("msg"));
