@@ -49,7 +49,6 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 
 	@Override
 	public void initData() {
-
 		ArryList = new ArrayList<BasePager>();
 		ArryList.add(new HomePager(mActivity));
 		ArryList.add(new ClassifyPager(mActivity));
@@ -119,9 +118,11 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 		case R.id.radio_h3:
 			setCussentPosition(3);
 			if (!Login_Activity.isFlag) {
+
 				Intent intent = new Intent(mActivity, Login_Activity.class);
 				mActivity.startActivity(intent);
 			} else {
+				
 				vp.setCurrentItem(2, false);// 去掉切换页面的动画
 			}
 			break;
@@ -183,4 +184,5 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 			break;
 		}
 	}
+
 }

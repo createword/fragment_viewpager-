@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 public abstract class BaseActivity extends Activity {
 	public TextView act_base_title;
+	public TextView right_button;
 	public FrameLayout act_content;
 	public FrameLayout act_state_content;
 	public RelativeLayout rel_Title_Bar;
@@ -34,6 +35,8 @@ public abstract class BaseActivity extends Activity {
 		act_content = (FrameLayout) findViewById(R.id.act_content);
 		act_state_content = (FrameLayout) findViewById(R.id.act_state_content);
 		rel_Title_Bar = (RelativeLayout) findViewById(R.id.relTitleBar);
+		right_button = (TextView) findViewById(R.id.right_button);
+		
 	}
 
 	public abstract void initView();
@@ -61,6 +64,8 @@ public abstract class BaseActivity extends Activity {
 						R.layout.base_error_info, null));
 
 			}
+		}else{
+			return;
 		}
 	}
 }

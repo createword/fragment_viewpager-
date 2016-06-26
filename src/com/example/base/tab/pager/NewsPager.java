@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.analysis.AtestCase;
@@ -27,6 +28,7 @@ public class NewsPager extends BasePager {
 
 	View view;
 	private TextView text;
+	private ImageView switch_pic;
 	private AtestCase casenew = new AtestCase();
 
 	public NewsPager(Activity activity) {

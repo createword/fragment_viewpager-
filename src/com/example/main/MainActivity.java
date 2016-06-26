@@ -12,18 +12,19 @@ import android.view.Window;
 public class MainActivity extends FragmentActivity {
 
 	private static final String FRAGMENT_CONTENT = "fragment_content";
+	private FragmentManager fm;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.base_activity_framelayout);
-	
+
 		initFragment();
 	}
 
 	private void initFragment() {
-		FragmentManager fm = getSupportFragmentManager();
+		fm = getSupportFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
 		transaction.replace(R.id.fl_content, new ContentFragment(),
 				FRAGMENT_CONTENT);
@@ -48,5 +49,6 @@ public class MainActivity extends FragmentActivity {
 
 		return fragment;
 	}
+
 
 }

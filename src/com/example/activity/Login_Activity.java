@@ -71,10 +71,10 @@ public class Login_Activity extends BaseActivity implements OnClickListener {
 					public void darSuccess(JSONObject result) {
 						mapArray = aUserLogin.setUserPara(result);
 						if ((Boolean) mapArray.get("isflag")) {
-							Utils.ToastShort(Login_Activity.this, "验证成功");
-					
+							Utils.ToastShort(Login_Activity.this, "验证成功");	
 							Login_Activity.isFlag = true;
-							finish();
+					         finish();
+						
 						} else {
 							Login_Activity.isFlag = false;
 							Utils.ToastShort(Login_Activity.this,(String) mapArray.get("msg"));

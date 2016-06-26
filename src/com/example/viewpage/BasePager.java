@@ -46,8 +46,7 @@ public abstract class BasePager extends View { //继承View 目的是在ContentFragemn
 		base_left = (TextView) mRootView.findViewById(R.id.base_left);
 		tvTitle = (TextView) mRootView.findViewById(R.id.base_title);
 		flContent = (FrameLayout) mRootView.findViewById(R.id.pager_content);
-		StateMainLayout = (FrameLayout) mRootView
-				.findViewById(R.id.pager_state_content);
+		StateMainLayout = (FrameLayout) mRootView.findViewById(R.id.pager_state_content);
 
 	}
 

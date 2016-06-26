@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ScrollView
+    <com.example.custom.view.CustomScrollView
         android:id="@+id/parentS"
-        android:focusableInTouchMode="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="false" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,6 +43,7 @@
                     android:orientation="vertical" >
 
                     <EditText
+                        android:gravity="top"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:background="@null"
@@ -67,24 +68,13 @@
                 android:padding="5dp" >
 
                 <ImageView
+                    android:id="@+id/switch_pic"
+                    android:layout_margin="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/app_close" />
+                    android:background="@drawable/picadd" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/app_close" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/app_close" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/app_close" />
+               
             </LinearLayout>
             <!-- list1 -->
 
@@ -223,15 +213,16 @@
 
                 <Button
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="39dp"
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/button_loginok"
                     android:text="确认发布"
+                    android:textSize="15sp"
                     android:textColor="@color/white" />
             </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
+    </com.example.custom.view.CustomScrollView>
 
 </LinearLayout>
