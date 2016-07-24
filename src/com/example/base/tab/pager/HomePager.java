@@ -39,7 +39,8 @@ import com.example.base.utils.Utils;
 import com.example.custom.view.RefreshListView;
 import com.example.custom.view.RefreshListView.onRefreshDataListener;
 import com.example.frag.R;
-import com.example.modle.TopNewPicModel.TopPicNews;
+import com.example.modle.TopNewPicModel;
+
 import com.example.viewpage.BasePager;
 import com.example.viewpage.TopViewPager;
 
@@ -51,7 +52,7 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 	private TopViewPager topViewPager;
 	private AtopViewData atopdata;
 	private String url = IpUtils.MainIpServer + "/NewsShow/topShow?";
-	public ArrayList<TopPicNews> picNewsList;
+
 	public HomePager(Activity activity) {
 		super(activity);
 		
@@ -122,11 +123,10 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 	 */
 	@Override
 	public void dataSuccess(JSONObject result) {
-		/*atopdata=new AtopViewData();
-		picNewsList=atopdata.AsyTopNewsToJson(result);
-		String title=picNewsList.get(0).title;*/
-		String res = result.toString().replaceAll("\\/", "/");//这里注意json 解析URL 的//时/会解析为\/ 
-		Utils.ToastShort(mActivity,res);
+		atopdata=new AtopViewData();
+		TopNewPicModel d=atopdata.AsyTopNewsToJson(result);
+
+		Utils.ToastShort(mActivity,d.getUrl());
 		
 	}
 

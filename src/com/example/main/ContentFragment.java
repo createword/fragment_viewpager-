@@ -122,8 +122,7 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 
 				Intent intent = new Intent(mActivity, Login_Activity.class);
 				mActivity.startActivity(intent);
-			
-				vp.setCurrentItem(2, false);
+				
 			} else {
 				
 				vp.setCurrentItem(2, false);// 去掉切换页面的动画

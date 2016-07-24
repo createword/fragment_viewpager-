@@ -8,32 +8,38 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.modle.TopNewPicModel;
-import com.example.modle.TopNewPicModel.TopPicNews;
 
 public class AtopViewData {
 	private TopNewPicModel newPicModel;
 
-	public ArrayList<TopPicNews> AsyTopNewsToJson(JSONObject jsonObject) {
-
+	public TopNewPicModel AsyTopNewsToJson(JSONObject jsonObject) {
+		// String res = result.toString().replaceAll("\\/", "/");//这里注意json
+		// 解析URL 的//时/会解析为\/ for 循环加断电要在循环外部加
 		try {
 
-			newPicModel.resCode = jsonObject.getInt("ret");
+			int resCode = jsonObject.getInt("ret");
 
-			if (newPicModel.resCode == 200) {
+			if (resCode == 200) {
+
 				JSONArray array = jsonObject.getJSONArray("info");
 				for (int i = 0; i < array.length(); i++) {
+					newPicModel = new TopNewPicModel();
 					JSONObject ob = array.getJSONObject(i);
-					String url = ob.getString("Picurl");
-					String picurl = ob.getString("pictitle");
-					TopPicNews topnews = newPicModel.new TopPicNews(url, picurl);
-					newPicModel.picNewsList.add(topnews);
+					String picUrl = ob.getString("picurl");
+				//	String url=picUrl.replaceAll("\\/", "/");
+					String pictitle = ob.getString("pictitle");
+					
+					newPicModel.setTitle(pictitle);
+					newPicModel.setUrl(picUrl);
+
 				}
 			}
+			return newPicModel;
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return newPicModel.picNewsList;
+		return null;
 
 	}
 }
