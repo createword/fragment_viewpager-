@@ -60,7 +60,7 @@ public class NewsPager extends BasePager {
 						params.put("id", "1");
 						new DoHttpAsyn(mActivity,
 								new BaseAsyTaskInterface() {
-									public void darSuccess(JSONObject result) {
+									public void dataSuccess(JSONObject result) {
 										for (String[] str : casenew.getArrayList(result)) {
 											text.setText(str[0]+str[1]);
 										}

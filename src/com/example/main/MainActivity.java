@@ -26,7 +26,7 @@ public class MainActivity extends FragmentActivity {
 	private void initFragment() {
 		fm = getSupportFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
-		transaction.replace(R.id.fl_content, new ContentFragment(),
+		transaction.replace(R.id.parent_content, new ContentFragment(),
 				FRAGMENT_CONTENT);
 
 		transaction.commit();// 鎻愪氦浜嬪姟

@@ -76,8 +76,9 @@
                 android:layout_alignTop="@+id/home_sale_ware"
                 android:layout_margin="5dp"
                 android:maxLines="3"
-                android:text="《书评家的趣味》一书的出版,是有双重的价值的:一为李影心作品的首次结集,具发掘之功;再有,让现在的读者看到曾湮没于故纸中的好文章"
-                android:textSize="10dp" />
+                android:text="《书评家的趣味》一书的出版,是有双重的价值的:一为李影心作品的首次结集,具发掘之功;再有,让现在的读者看到曾湮没于故纸中的好文章让现在的读者看到曾湮没于故纸中的好文章"
+                android:textSize="10dp"
+                android:ellipsize="end" />
 
             <LinearLayout
                 android:layout_width="match_parent"

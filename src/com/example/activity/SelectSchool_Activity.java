@@ -37,7 +37,6 @@ import android.widget.ListView;
 public class SelectSchool_Activity extends BaseActivity implements
 		BaseAsyTaskInterface {
 	private ListView provinceListView, schoolListView;
-
 	private SelectProAdapter Padapter;
 	private SelectSchoolAdapter Sadapter;
 	private String[] arryProvince;
@@ -45,7 +44,7 @@ public class SelectSchool_Activity extends BaseActivity implements
 	private String url = IpUtils.MainIpServer
 			+ "/yitiaojie/SelectProvinceJson?";
 	private String cid = "1";
-
+       private int Mposition;
 	@SuppressLint("ResourceAsColor")
 	@Override
 	public void initView() {
@@ -76,7 +75,7 @@ public class SelectSchool_Activity extends BaseActivity implements
 				categoriesList.add(hashMap);
 			}
 		}
-		Padapter = new SelectProAdapter(this, categoriesList);
+		Padapter = new SelectProAdapter(this, categoriesList,Mposition);
 		provinceListView.setAdapter(Padapter);
 		
 		//初始化第一个Item 的数据
@@ -91,11 +90,11 @@ public class SelectSchool_Activity extends BaseActivity implements
 
 		public void onItemClick(AdapterView<?> parent, View arg1, int position,
 				long arg3) {
-			
+			Mposition=position;
 			Map<String, String> params = new HashMap<String, String>();
 			params.put("pid", Integer.toString(position + 1));
 			new DoHttpAsyn(SelectSchool_Activity.this,SelectSchool_Activity.this).execute(url, params);
-		         	
+			
 			if (Sadapter == null) { //当服务器停止服务Sadapter为空 就会报错因此得判断
 				return;
 			} else {
@@ -103,7 +102,6 @@ public class SelectSchool_Activity extends BaseActivity implements
 
 			}
 	
-
 		}
 
 	}
@@ -111,7 +109,7 @@ public class SelectSchool_Activity extends BaseActivity implements
 	/**
 	 * 访问网络数据返回jsonresult
 	 */
-	public void darSuccess(JSONObject result) {
+	public void dataSuccess(JSONObject result) {
 		SchoolCase sCase = new SchoolCase();
 		arrySchool = sCase.AsySchoolToJson(result);
 
@@ -120,6 +118,7 @@ public class SelectSchool_Activity extends BaseActivity implements
 		schoolListView.setAdapter(Sadapter);
 		
 		Sadapter.notifyDataSetInvalidated();
+		
 
 	}
 

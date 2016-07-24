@@ -26,7 +26,9 @@ import android.widget.Toast;
 import com.example.activity.Login_Activity;
 import com.example.activity.SelectSchool_Activity;
 import com.example.adapter.HomeAdapter;
+import com.example.adapter.TopViewAdapter;
 import com.example.analysis.AtestCase;
+import com.example.analysis.AtopViewData;
 import com.example.analysis.BaseAsyTaskInterface;
 import com.example.base.utils.AppCustomDialog;
 import com.example.base.utils.DoHttpAsyn;
@@ -34,20 +36,25 @@ import com.example.base.utils.HttpUtils;
 import com.example.base.utils.IpUtils;
 import com.example.base.utils.LogUtils;
 import com.example.base.utils.Utils;
+import com.example.custom.view.RefreshListView;
+import com.example.custom.view.RefreshListView.onRefreshDataListener;
 import com.example.frag.R;
+import com.example.modle.TopNewPicModel.TopPicNews;
 import com.example.viewpage.BasePager;
+import com.example.viewpage.TopViewPager;
 
-public class HomePager extends BasePager implements OnClickListener,
-		OnRefreshListener, OnItemClickListener {
+public class HomePager extends BasePager implements OnClickListener, OnItemClickListener, BaseAsyTaskInterface {
 	private TextView text;
-	private ListView homListView;
-	private View view;
+	private View view, headView;
 	private ArrayList<String> strs;
-	SwipeRefreshLayout refresh_layout;
-
-	// 定义一个String数组用来显示ListView的内容private ListView lv;/** Called when the act
+	private RefreshListView homListView;
+	private TopViewPager topViewPager;
+	private AtopViewData atopdata;
+	private String url = IpUtils.MainIpServer + "/NewsShow/topShow?";
+	public ArrayList<TopPicNews> picNewsList;
 	public HomePager(Activity activity) {
 		super(activity);
+		
 	}
 
 	@Override
@@ -56,34 +63,46 @@ public class HomePager extends BasePager implements OnClickListener,
 		base_left.setText("所有学校");
 		tvTitle.setText("首页");
 		view = LayoutInflater.from(mActivity).inflate(R.layout.home_pager, null);
-		homListView = (ListView) view.findViewById(R.id.home_listview);
-		refresh_layout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
-		refresh_layout.setColorScheme(R.color.green, R.color.fenread,R.color.blue, R.color.read);
+		headView = View.inflate(mActivity, R.layout.home_top_page, null);
+		topViewPager = (TopViewPager) headView.findViewById(R.id.topViewPager);
+		homListView = (RefreshListView) view.findViewById(R.id.home_listview);
+		homListView.addHeaderView(headView);
 		flContent.addView(view);
 
 	}
 
 	@Override
 	public void initData() {
-
 		strs = new ArrayList<String>();
 		for (int i = 0; i < 10; i++) {
 			strs.add("中华人民共和国");
 		}
 
+
+
 		base_left.setOnClickListener(this);
 		homListView.setAdapter(new HomeAdapter(mActivity, strs));
-		homListView.setOnItemClickListener(this);
-		refresh_layout.setOnRefreshListener(this);
-		homListView.addFooterView(LayoutInflater.from(mActivity).inflate(R.layout.home_pager_footveiw, null));
+		topViewPager.setAdapter(new TopViewAdapter());
+		homListView.setOnRefreshListener(new onRefreshDataListener() {
+
+			public void onRefreshData() {
+
+			}
+
+			public void onLoadMore() {
+
+			}
+
+		});
 
 	}
 
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.base_left:
-			Intent in = new Intent(mActivity, SelectSchool_Activity.class);
-			mActivity.startActivity(in);
+			new DoHttpAsyn(mActivity, this).execute(url, null);
+	/*		Intent in = new Intent(mActivity, SelectSchool_Activity.class);
+			mActivity.startActivity(in);*/
 			break;
 
 		default:
@@ -92,15 +111,29 @@ public class HomePager extends BasePager implements OnClickListener,
 
 	}
 
-	public void onRefresh() {
-
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+		Intent in = new Intent(mActivity, Login_Activity.class);
+		mActivity.startActivity(in);
+		 Utils.ToastShort(mActivity, position + "");
 	}
 
-	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-			long arg3) {
-Intent in =new Intent(mActivity,Login_Activity.class);
-mActivity.startActivity(in);
-	//	Utils.ToastShort(mActivity, position + "");
+	/**
+	 * 处理网络数据返回的结果
+	 */
+	@Override
+	public void dataSuccess(JSONObject result) {
+		/*atopdata=new AtopViewData();
+		picNewsList=atopdata.AsyTopNewsToJson(result);
+		String title=picNewsList.get(0).title;*/
+		String res = result.toString().replaceAll("\\/", "/");//这里注意json 解析URL 的//时/会解析为\/ 
+		Utils.ToastShort(mActivity,res);
+		
+	}
+
+	@Override
+	public void dataError(String msg) {
+	
+
 	}
 
 }

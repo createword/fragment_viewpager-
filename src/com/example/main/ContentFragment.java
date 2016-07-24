@@ -32,7 +32,7 @@ import android.widget.Toast;
 public class ContentFragment extends BaseFragment implements OnClickListener {
 	private ViewPager vp;
 	private ArrayList<BasePager> ArryList;
-	BasePagerAdapter bAdapter;
+	private BasePagerAdapter bAdapter;
 	private int intnumber;
 	private TextView radio_h1, radio_h2, radio_h3, radio_h4;
 
@@ -117,13 +117,17 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 			break;
 		case R.id.radio_h3:
 			setCussentPosition(3);
+			
 			if (!Login_Activity.isFlag) {
 
 				Intent intent = new Intent(mActivity, Login_Activity.class);
 				mActivity.startActivity(intent);
+			
+				vp.setCurrentItem(2, false);
 			} else {
 				
 				vp.setCurrentItem(2, false);// 去掉切换页面的动画
+				
 			}
 			break;
 		case R.id.radio_h4:

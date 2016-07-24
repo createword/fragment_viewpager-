@@ -21,14 +21,16 @@ import android.widget.TextView;
  */
 @SuppressLint("ResourceAsColor")
 public class SelectProAdapter extends BaseAdapter {
-
+private int mPosition;
 	private Context context;
 	private LayoutInflater layoutInflater;
 	private List<HashMap<String,CategoryModel>> categoriesList;
-	public SelectProAdapter(Context context,List<HashMap<String, CategoryModel>> categoriesList) {
+	public SelectProAdapter(Context context,List<HashMap<String, CategoryModel>> categoriesList,int position) {
 		this.context = context;
 		this.categoriesList = categoriesList;
+		this.mPosition=position;
 		layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	
 	}
 
 	public int getCount() {
@@ -57,7 +59,11 @@ public class SelectProAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-	
+	      if(mPosition==position){
+		   viewHolder.textView.setEnabled(true);
+	      }else{
+		 viewHolder.textView.setEnabled(false);
+	     }
 		viewHolder.textView.setText(categoriesList.get(position).get("category_title").getMprovince());
 
 		return convertView;

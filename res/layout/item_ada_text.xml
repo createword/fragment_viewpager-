@@ -7,9 +7,11 @@
 
     <TextView
         android:id="@+id/provincename"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:textColor="@drawable/select_listview_isenble"
+        android:enabled="false"
         android:padding="10dp"/>
 
 </LinearLayout>

@@ -28,8 +28,7 @@ public class DoHttpAsyn extends AsyncTask<Object, Void, String> {
 	public DoHttpAsyn(Context context, BaseAsyTaskInterface bInterface) {
 		this.context = context;
 		this.bInterface = bInterface;
-		dialog = new AppCustomDialog(context, R.layout.progress_dialog,
-				R.style.DialogTheme);
+		dialog = new AppCustomDialog(context, R.layout.progress_dialog, R.style.DialogTheme);
 	}
 
 	@Override
@@ -65,7 +64,7 @@ public class DoHttpAsyn extends AsyncTask<Object, Void, String> {
 	 */
 	public void ConverErrorMessageShow(String res) {
 		JSONObject result = null;
-		if(res!=null){//res当服务器不向客户端返回任何结果是则为null
+		if (res != null) {// res当服务器不向客户端返回任何结果是则为null
 			if (res.contains("timed out")) { // 当请求Ip不正确时会超时 请检查请求地址是否正确
 				Utils.ToastShort(context, Constants.ERROR_NETWORK_TIMEOUT);
 
@@ -79,7 +78,7 @@ public class DoHttpAsyn extends AsyncTask<Object, Void, String> {
 				try {
 					result = new JSONObject(res);
 					System.out.println("json解析参数-->" + result);
-					bInterface.darSuccess(result);
+					bInterface.dataSuccess(result);
 
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -89,9 +88,9 @@ public class DoHttpAsyn extends AsyncTask<Object, Void, String> {
 
 				}
 			}
-		}else{
-			return ;
+		} else {
+			return;
 		}
-		
+
 	}
 }
