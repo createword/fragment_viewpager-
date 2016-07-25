@@ -174,7 +174,7 @@ containing a value of this type.
         public static final int school=0x7f0a000c;
         public static final int sett_id=0x7f0a0039;
         public static final int switch_pic=0x7f0a0031;
-        public static final int topViewPager=0x7f0a0024;
+        public static final int topViewPager1=0x7f0a0024;
         public static final int totle_pic=0x7f0a0010;
         public static final int tv_item=0x7f0a001c;
         public static final int userEdit_id=0x7f0a0027;

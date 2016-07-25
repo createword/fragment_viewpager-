@@ -4,10 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.example.viewpage.TopViewPager
-        android:id="@+id/topViewPager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-    </com.example.viewpage.TopViewPager>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp" >
+
+        <com.example.viewpage.TopViewPager
+            android:id="@+id/topViewPager1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </com.example.viewpage.TopViewPager>
+    </RelativeLayout>
 
 </LinearLayout>

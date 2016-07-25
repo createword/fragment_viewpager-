@@ -11,10 +11,11 @@ import com.example.modle.TopNewPicModel;
 
 public class AtopViewData {
 	private TopNewPicModel newPicModel;
-
-	public TopNewPicModel AsyTopNewsToJson(JSONObject jsonObject) {
+	private ArrayList<TopNewPicModel> arrayList;
+	public ArrayList<TopNewPicModel> AsyTopNewsToJson(JSONObject jsonObject) {
 		// String res = result.toString().replaceAll("\\/", "/");//这里注意json
 		// 解析URL 的//时/会解析为\/ for 循环加断电要在循环外部加
+		arrayList=new  ArrayList<TopNewPicModel>();
 		try {
 
 			int resCode = jsonObject.getInt("ret");
@@ -26,15 +27,15 @@ public class AtopViewData {
 					newPicModel = new TopNewPicModel();
 					JSONObject ob = array.getJSONObject(i);
 					String picUrl = ob.getString("picurl");
-				//	String url=picUrl.replaceAll("\\/", "/");
+					// String url=picUrl.replaceAll("\\/", "/");
 					String pictitle = ob.getString("pictitle");
-					
+
 					newPicModel.setTitle(pictitle);
 					newPicModel.setUrl(picUrl);
-
+					arrayList.add(newPicModel);
 				}
 			}
-			return newPicModel;
+			return arrayList;
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

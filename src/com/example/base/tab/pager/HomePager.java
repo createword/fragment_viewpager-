@@ -52,10 +52,11 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 	private TopViewPager topViewPager;
 	private AtopViewData atopdata;
 	private String url = IpUtils.MainIpServer + "/NewsShow/topShow?";
+	private ArrayList<TopNewPicModel> arrayList;
 
 	public HomePager(Activity activity) {
 		super(activity);
-		
+
 	}
 
 	@Override
@@ -65,7 +66,7 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 		tvTitle.setText("首页");
 		view = LayoutInflater.from(mActivity).inflate(R.layout.home_pager, null);
 		headView = View.inflate(mActivity, R.layout.home_top_page, null);
-		topViewPager = (TopViewPager) headView.findViewById(R.id.topViewPager);
+		topViewPager = (TopViewPager) headView.findViewById(R.id.topViewPager1);
 		homListView = (RefreshListView) view.findViewById(R.id.home_listview);
 		homListView.addHeaderView(headView);
 		flContent.addView(view);
@@ -78,12 +79,10 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 		for (int i = 0; i < 10; i++) {
 			strs.add("中华人民共和国");
 		}
-
-
-
+		new DoHttpAsyn(mActivity, this).execute(url, null);
 		base_left.setOnClickListener(this);
 		homListView.setAdapter(new HomeAdapter(mActivity, strs));
-		topViewPager.setAdapter(new TopViewAdapter());
+
 		homListView.setOnRefreshListener(new onRefreshDataListener() {
 
 			public void onRefreshData() {
@@ -101,9 +100,9 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.base_left:
-			new DoHttpAsyn(mActivity, this).execute(url, null);
-	/*		Intent in = new Intent(mActivity, SelectSchool_Activity.class);
-			mActivity.startActivity(in);*/
+
+			Intent in = new Intent(mActivity, SelectSchool_Activity.class);
+			mActivity.startActivity(in);
 			break;
 
 		default:
@@ -115,7 +114,7 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 		Intent in = new Intent(mActivity, Login_Activity.class);
 		mActivity.startActivity(in);
-		 Utils.ToastShort(mActivity, position + "");
+		Utils.ToastShort(mActivity, position + "");
 	}
 
 	/**
@@ -123,16 +122,14 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 	 */
 	@Override
 	public void dataSuccess(JSONObject result) {
-		atopdata=new AtopViewData();
-		TopNewPicModel d=atopdata.AsyTopNewsToJson(result);
+		atopdata = new AtopViewData();
+		arrayList = atopdata.AsyTopNewsToJson(result);
+		topViewPager.setAdapter(new TopViewAdapter(mActivity, arrayList));
 
-		Utils.ToastShort(mActivity,d.getUrl());
-		
 	}
 
 	@Override
 	public void dataError(String msg) {
-	
 
 	}
 
