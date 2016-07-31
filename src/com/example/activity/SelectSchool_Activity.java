@@ -75,12 +75,16 @@ public class SelectSchool_Activity extends BaseActivity implements BaseAsyTaskIn
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("pid", "1");
 		new DoHttpAsyn(SelectSchool_Activity.this, this).execute(url, params);
+		
 		provinceListView.setOnItemClickListener(new arryProOnItemClick());
-
 		Padapter = new SelectProAdapter(this, categoriesList);
 		provinceListView.setAdapter(Padapter);
 	}
-
+/**
+ * 学校所属的省份点击事件
+ * @author zhanghengming
+ *
+ */
 	public class arryProOnItemClick implements OnItemClickListener {
 
 		public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3) {
@@ -121,7 +125,11 @@ public class SelectSchool_Activity extends BaseActivity implements BaseAsyTaskIn
 		Utils.ToastShort(getBaseContext(), msg);
 		return;
 	}
-
+/**
+ * 学校名称点击事件
+ * @author zhanghengmign
+ *
+ */
 	public class schoolOnItemClick implements OnItemClickListener {
 
 		public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3) {
