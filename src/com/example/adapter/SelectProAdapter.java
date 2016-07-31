@@ -14,23 +14,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 /**
  * Ê¡·Ý
+ * 
  * @author WINTER
  *
  */
-@SuppressLint("ResourceAsColor")
+
 public class SelectProAdapter extends BaseAdapter {
-private int mPosition;
+	private int selectItem;
 	private Context context;
 	private LayoutInflater layoutInflater;
-	private List<HashMap<String,CategoryModel>> categoriesList;
-	public SelectProAdapter(Context context,List<HashMap<String, CategoryModel>> categoriesList,int position) {
+	private List<HashMap<String, CategoryModel>> categoriesList;
+
+	public SelectProAdapter(Context context, List<HashMap<String, CategoryModel>> categoriesList) {
 		this.context = context;
 		this.categoriesList = categoriesList;
-		this.mPosition=position;
 		layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	
+
 	}
 
 	public int getCount() {
@@ -38,9 +40,9 @@ private int mPosition;
 		return categoriesList.size();
 	}
 
-	public Object getItem(int position) {
+	public Object getItem(int arg0) {
 		// TODO Auto-generated method stub
-		return position;
+		return categoriesList.get(arg0);
 	}
 
 	public long getItemId(int position) {
@@ -49,23 +51,30 @@ private int mPosition;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub select_listview_isenble
+		// convertView.setBackgroundResource(R.drawable.select_listview_isenble);
 		ViewHolder viewHolder = null;
 		if (convertView == null) {
-			convertView = layoutInflater.inflate(R.layout.item_ada_text, null);
 			viewHolder = new ViewHolder();
+			convertView = layoutInflater.inflate(R.layout.item_ada_text, null);
+
 			viewHolder.textView = (TextView) convertView.findViewById(R.id.provincename);
+			// convertView.setBackgroundColor(R.drawable.select_listview_isenble);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-	      if(mPosition==position){
-		   viewHolder.textView.setEnabled(true);
-	      }else{
-		 viewHolder.textView.setEnabled(false);
-	     }
-		viewHolder.textView.setText(categoriesList.get(position).get("category_title").getMprovince());
-
+		if (position == selectItem) {
+			convertView.setBackgroundColor(Color.WHITE);
+			viewHolder.textView.setEnabled(false);
+		} 
+		else {
+			viewHolder.textView.setEnabled(true);
+			convertView.setBackgroundColor(Color.TRANSPARENT);
+		}	
+		
+		viewHolder.textView.setText(
+				categoriesList.get(position).get("category_title").getMprovince());
 		return convertView;
 	}
 
@@ -73,5 +82,8 @@ private int mPosition;
 		public TextView textView;
 	}
 
-	
+	public void selectPosition(int position) {
+		this.selectItem = position;
+
+	}
 }

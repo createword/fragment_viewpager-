@@ -31,7 +31,7 @@ import android.widget.Toast;
 
 public class ContentFragment extends BaseFragment implements OnClickListener {
 	private ViewPager vp;
-	private ArrayList<BasePager> ArryList;
+	public ArrayList<BasePager> ArryList;
 	private BasePagerAdapter bAdapter;
 	private int intnumber;
 	private TextView radio_h1, radio_h2, radio_h3, radio_h4;
@@ -46,6 +46,8 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 		vp = (ViewPager) view.findViewById(R.id.noScrollViewPager1);
 		return view;
 	}
+
+	
 
 	@Override
 	public void initData() {
@@ -117,16 +119,16 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 			break;
 		case R.id.radio_h3:
 			setCussentPosition(3);
-			
+
 			if (!Login_Activity.isFlag) {
 
 				Intent intent = new Intent(mActivity, Login_Activity.class);
 				mActivity.startActivity(intent);
-				
+
 			} else {
-				
+
 				vp.setCurrentItem(2, false);// 去掉切换页面的动画
-				
+
 			}
 			break;
 		case R.id.radio_h4:
@@ -147,10 +149,10 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 		Drawable drawable2 = getResources().getDrawable(R.drawable.nav_menu_like);
 		Drawable drawable3 = getResources().getDrawable(R.drawable.nav_menu_category);
 		Drawable drawable4 = getResources().getDrawable(R.drawable.nav_menu_me);
-		drawable1.setBounds(0, 0, drawable1.getMinimumWidth(),drawable1.getMinimumHeight());
-		drawable2.setBounds(0, 0, drawable2.getMinimumWidth(),drawable2.getMinimumHeight());
-		drawable3.setBounds(0, 0, drawable3.getMinimumWidth(),drawable3.getMinimumHeight());
-		drawable4.setBounds(0, 0, drawable4.getMinimumWidth(),drawable4.getMinimumHeight());
+		drawable1.setBounds(0, 0, drawable1.getMinimumWidth(), drawable1.getMinimumHeight());
+		drawable2.setBounds(0, 0, drawable2.getMinimumWidth(), drawable2.getMinimumHeight());
+		drawable3.setBounds(0, 0, drawable3.getMinimumWidth(), drawable3.getMinimumHeight());
+		drawable4.setBounds(0, 0, drawable4.getMinimumWidth(), drawable4.getMinimumHeight());
 		radio_h1.setCompoundDrawables(null, drawable1, null, null);
 		radio_h2.setCompoundDrawables(null, drawable2, null, null);
 		radio_h3.setCompoundDrawables(null, drawable3, null, null);
@@ -161,25 +163,25 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 		switch (i) {
 		case 1:
 			Drawable drawable1 = getResources().getDrawable(R.drawable.nav_menu_home_selected);
-			drawable1.setBounds(0, 0, drawable1.getMinimumWidth(),drawable1.getMinimumHeight());
+			drawable1.setBounds(0, 0, drawable1.getMinimumWidth(), drawable1.getMinimumHeight());
 			radio_h1.setCompoundDrawables(null, drawable1, null, null);
 
 			break;
 		case 2:
 			Drawable drawable2 = getResources().getDrawable(R.drawable.nav_menu_like_active);
-			drawable2.setBounds(0, 0, drawable2.getMinimumWidth(),drawable2.getMinimumHeight());
+			drawable2.setBounds(0, 0, drawable2.getMinimumWidth(), drawable2.getMinimumHeight());
 			radio_h2.setCompoundDrawables(null, drawable2, null, null);
 			break;
 
 		case 3:
 			Drawable drawable3 = getResources().getDrawable(R.drawable.nav_menu_category_active);
-			drawable3.setBounds(0, 0, drawable3.getMinimumWidth(),drawable3.getMinimumHeight());
+			drawable3.setBounds(0, 0, drawable3.getMinimumWidth(), drawable3.getMinimumHeight());
 			radio_h3.setCompoundDrawables(null, drawable3, null, null);
 			break;
 
 		case 4:
 			Drawable drawable4 = getResources().getDrawable(R.drawable.nav_menu_me_selected);
-			drawable4.setBounds(0, 0, drawable4.getMinimumWidth(),drawable4.getMinimumHeight());
+			drawable4.setBounds(0, 0, drawable4.getMinimumWidth(), drawable4.getMinimumHeight());
 			radio_h4.setCompoundDrawables(null, drawable4, null, null);
 			break;
 

@@ -18,13 +18,13 @@ import android.view.Window;
  */
 public abstract class BaseFragment extends Fragment {
 
-	public Activity mActivity;
+	public MainActivity mActivity;
 	
 	// fragment创建
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mActivity = getActivity();
+		mActivity = (MainActivity) getActivity();
 	}
 
 	// 处理fragment的布局

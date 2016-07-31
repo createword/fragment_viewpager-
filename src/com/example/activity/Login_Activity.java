@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,6 +74,7 @@ public class Login_Activity extends BaseActivity implements OnClickListener {
 						if ((Boolean) mapArray.get("isflag")) {
 							Utils.ToastShort(Login_Activity.this, "验证成功");	
 							Login_Activity.isFlag = true;
+							
 					         finish();
 						
 						} else {

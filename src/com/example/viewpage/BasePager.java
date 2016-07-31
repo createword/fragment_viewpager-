@@ -3,6 +3,7 @@ package com.example.viewpage;
 import com.example.base.utils.Utils;
 import com.example.exception.ConnectException;
 import com.example.frag.R;
+import com.example.main.MainActivity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,12 +22,12 @@ public abstract class BasePager extends View { //继承View 目的是在ContentFragemn
 	public BasePager(Context context) {
 		super(context);
 
-		mActivity = (Activity) context;
+		mActivity = (MainActivity) context;
 		BaseinitViews();
 
 	}
 
-	public Activity mActivity;
+	public MainActivity mActivity;
 	public View mRootView;// 布局对象
 
 	public TextView base_left;// 标题左边

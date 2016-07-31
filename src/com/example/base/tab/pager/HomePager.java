@@ -10,8 +10,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.preference.PreferenceManager.OnActivityResultListener;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,12 +39,16 @@ import com.example.base.utils.Utils;
 import com.example.custom.view.RefreshListView;
 import com.example.custom.view.RefreshListView.onRefreshDataListener;
 import com.example.frag.R;
+import com.example.main.MainActivity;
+import com.example.main.MainActivity.onResultParams;
 import com.example.modle.TopNewPicModel;
 
 import com.example.viewpage.BasePager;
 import com.example.viewpage.TopViewPager;
+import com.viewpagerindicator.CirclePageIndicator;
 
-public class HomePager extends BasePager implements OnClickListener, OnItemClickListener, BaseAsyTaskInterface {
+public class HomePager extends BasePager
+		implements OnClickListener, OnItemClickListener, BaseAsyTaskInterface, OnPageChangeListener, onResultParams {
 	private TextView text;
 	private View view, headView;
 	private ArrayList<String> strs;
@@ -53,8 +57,10 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 	private AtopViewData atopdata;
 	private String url = IpUtils.MainIpServer + "/NewsShow/topShow?";
 	private ArrayList<TopNewPicModel> arrayList;
+	private TextView headTitle;
+	private CirclePageIndicator indicator;
 
-	public HomePager(Activity activity) {
+	public HomePager(MainActivity activity) {
 		super(activity);
 
 	}
@@ -66,8 +72,12 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 		tvTitle.setText("首页");
 		view = LayoutInflater.from(mActivity).inflate(R.layout.home_pager, null);
 		headView = View.inflate(mActivity, R.layout.home_top_page, null);
+		headTitle = (TextView) headView.findViewById(R.id.titleText);
+		indicator = (CirclePageIndicator) headView.findViewById(R.id.id_indicator);
+
 		topViewPager = (TopViewPager) headView.findViewById(R.id.topViewPager1);
 		homListView = (RefreshListView) view.findViewById(R.id.home_listview);
+
 		homListView.addHeaderView(headView);
 		flContent.addView(view);
 
@@ -75,6 +85,8 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 
 	@Override
 	public void initData() {
+		mActivity.getMapParams(this);
+		topViewPager.setOnPageChangeListener(this);
 		strs = new ArrayList<String>();
 		for (int i = 0; i < 10; i++) {
 			strs.add("中华人民共和国");
@@ -100,9 +112,9 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.base_left:
-
 			Intent in = new Intent(mActivity, SelectSchool_Activity.class);
-			mActivity.startActivity(in);
+			mActivity.startActivityForResult(in, 1);
+
 			break;
 
 		default:
@@ -125,11 +137,45 @@ public class HomePager extends BasePager implements OnClickListener, OnItemClick
 		atopdata = new AtopViewData();
 		arrayList = atopdata.AsyTopNewsToJson(result);
 		topViewPager.setAdapter(new TopViewAdapter(mActivity, arrayList));
+		indicator.setViewPager(topViewPager);
+		indicator.setOnPageChangeListener(this);
+		headTitle.setText(arrayList.get(0).title);
 
 	}
 
 	@Override
 	public void dataError(String msg) {
+
+	}
+
+	@Override
+	public void onPageScrollStateChanged(int arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onPageScrolled(int arg0, float arg1, int arg2) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onPageSelected(int arg0) {
+		headTitle.setText(arrayList.get(arg0).title);
+
+	}
+
+	/**
+	 * 获取onresult 数据
+	 * 
+	 * @param params
+	 */
+	@Override
+	public void MapParams(Map<String, Object> params) {
+		int position = (Integer) params.get("position");
+		ArrayList<String> arrySchool = (ArrayList<String>) params.get("array");
+		base_left.setText(arrySchool.get(position).toString());
 
 	}
 

@@ -2,7 +2,7 @@ package com.example.base.tab.pager;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -38,11 +38,13 @@ public class PublishPager extends BasePager {
 	public void initData() {
 		switchpic.setOnClickListener(new myOnClick());
 	}
-/**
- * 事件点击处理事件
- * @author WINTER
- *
- */
+
+	/**
+	 * 事件点击处理事件
+	 * 
+	 * @author WINTER
+	 *
+	 */
 	class myOnClick implements OnClickListener {
 
 		public void onClick(View v) {
