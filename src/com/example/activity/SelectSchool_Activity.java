@@ -87,7 +87,7 @@ public class SelectSchool_Activity extends BaseActivity implements BaseAsyTaskIn
 			
 
 			Map<String, String> params = new HashMap<String, String>();
-			params.put("pid", Integer.toString(position + 1));
+			params.put("pid", Integer.toString(position + 1));//数据库里的第一个数据就是从1开始的所以加1
 			new DoHttpAsyn(SelectSchool_Activity.this, SelectSchool_Activity.this).execute(url, params);
 			Padapter.selectPosition(position);
 		    Padapter.notifyDataSetInvalidated();
