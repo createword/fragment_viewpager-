@@ -20,14 +20,14 @@ public class SelectSchoolAdapter extends BaseAdapter {
 	Context context;
 	LayoutInflater layoutInflater;
 	ArrayList<String> arrySchool;
-	public int foodpoition;
 
-	public SelectSchoolAdapter(Context context, ArrayList<String> arrySchool,
-			int position) {
+
+	public SelectSchoolAdapter(Context context, ArrayList<String> arrySchool
+			) {
 		this.context = context;
 		this.arrySchool = arrySchool;
 		layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		this.foodpoition = position;
+
 	}
 
 	public int getCount() {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.frag.R;
-
+import com.example.modle.SchoolInfo;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -18,14 +18,16 @@ public class HomeAdapter extends BaseAdapter {
 
 	Context context;
 	LayoutInflater layoutInflater;
-	ArrayList<String> array;
+	ArrayList<SchoolInfo> array;
 	public int foodpoition;
+	private String scName;
 
-	public HomeAdapter(Context context, ArrayList<String> array) {
+	public HomeAdapter(Context context, ArrayList<SchoolInfo> array, String scName) {
 		this.context = context;
 		this.array = array;
+		this.scName = scName;
 		layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
+
 	}
 
 	public int getCount() {
@@ -49,19 +51,21 @@ public class HomeAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = layoutInflater.inflate(R.layout.home_pager_item, null);
 			viewHolder = new ViewHolder();
-			viewHolder.textView = (TextView) convertView
-					.findViewById(R.id.home_text_u);
+			viewHolder.textView = (TextView) convertView.findViewById(R.id.home_text_u);
+			viewHolder.home_text_school = (TextView) convertView.findViewById(R.id.home_text_school);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.textView.setText(array.get(position).toString());
+		viewHolder.textView.setText(array.get(position).getInfotitle());
+	viewHolder.home_text_school.setText(scName);
 
 		return convertView;
 	}
 
 	public static class ViewHolder {
 		public TextView textView;
+		public TextView home_text_school;
 	}
 
 }

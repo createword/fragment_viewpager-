@@ -114,7 +114,7 @@ public class SelectSchool_Activity extends BaseActivity implements BaseAsyTaskIn
 		SchoolCase sCase = new SchoolCase();
 		arrySchool = sCase.AsySchoolToJson(result);
 
-		Sadapter = new SelectSchoolAdapter(SelectSchool_Activity.this, arrySchool, StringUtil.String2Int(cid));
+		Sadapter = new SelectSchoolAdapter(SelectSchool_Activity.this, arrySchool);
 		schoolListView.setAdapter(Sadapter);
 		schoolListView.setOnItemClickListener(new schoolOnItemClick());
 		Sadapter.notifyDataSetInvalidated();
