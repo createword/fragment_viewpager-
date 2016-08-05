@@ -52,19 +52,25 @@ public class HomeAdapter extends BaseAdapter {
 			convertView = layoutInflater.inflate(R.layout.home_pager_item, null);
 			viewHolder = new ViewHolder();
 			viewHolder.textView = (TextView) convertView.findViewById(R.id.home_text_u);
+			viewHolder.infotitle = (TextView) convertView.findViewById(R.id.infotitle);
+			viewHolder.body = (TextView) convertView.findViewById(R.id.body);
 			viewHolder.home_text_school = (TextView) convertView.findViewById(R.id.home_text_school);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.textView.setText(array.get(position).getInfotitle());
-	viewHolder.home_text_school.setText(scName);
+		viewHolder.textView.setText("Æßº£ÆÕ³¿");
+		viewHolder.home_text_school.setText(scName);
+		viewHolder.body.setText(array.get(position).getInfobody());
+		viewHolder.infotitle.setText(array.get(position).getInfotitle());
 
 		return convertView;
 	}
 
 	public static class ViewHolder {
 		public TextView textView;
+		public TextView body;
+		public TextView infotitle;
 		public TextView home_text_school;
 	}
 

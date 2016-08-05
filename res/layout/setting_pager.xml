@@ -98,23 +98,23 @@
                 android:padding="10dp" >
 
                 <ImageView
-                    android:id="@+id/home_img_u"
+                    android:id="@+id/home_img_u0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:src="@drawable/l_head" />
 
                 <TextView
-                    android:id="@+id/home_text_u"
+                    android:id="@+id/home_text_u0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/home_img_u"
+                    android:layout_toRightOf="@id/home_img_u0"
                     android:text="我的消息" />
 
                 <TextView
-                    android:id="@+id/home_text_school"
+                    android:id="@+id/home_text_school0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -132,23 +132,23 @@
                 android:padding="10dp" >
 
                 <ImageView
-                    android:id="@+id/home_img_u"
+                    android:id="@+id/home_img_u1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:src="@drawable/l_head" />
 
                 <TextView
-                    android:id="@+id/home_text_u"
+                    android:id="@+id/home_text_u1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/home_img_u"
+                    android:layout_toRightOf="@id/home_img_u1"
                     android:text="我的发布" />
 
                 <TextView
-                    android:id="@+id/home_text_school"
+                    android:id="@+id/home_text_school1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -170,23 +170,23 @@
                 android:padding="10dp" >
 
                 <ImageView
-                    android:id="@+id/home_img_u"
+                    android:id="@+id/home_img_u2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:src="@drawable/l_head" />
 
                 <TextView
-                    android:id="@+id/home_text_u"
+                    android:id="@+id/home_text_u2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/home_img_u"
+                    android:layout_toRightOf="@id/home_img_u2"
                     android:text="求购信息" />
 
                 <TextView
-                    android:id="@+id/home_text_school"
+                    android:id="@+id/home_text_school2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -205,23 +205,23 @@
                 android:padding="10dp" >
 
                 <ImageView
-                    android:id="@+id/home_img_u"
+                    android:id="@+id/home_img_u3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:src="@drawable/l_head" />
 
                 <TextView
-                    android:id="@+id/home_text_u"
+                    android:id="@+id/home_text_u3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/home_img_u"
+                    android:layout_toRightOf="@id/home_img_u3"
                     android:text="帮助反馈" />
 
                 <TextView
-                    android:id="@+id/home_text_school"
+                    android:id="@+id/home_text_school3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -245,23 +245,23 @@
                 android:padding="10dp" >
 
                 <ImageView
-                    android:id="@+id/home_img_u"
+                    android:id="@+id/home_img_u4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:src="@drawable/l_head" />
 
                 <TextView
-                    android:id="@+id/home_text_u"
+                    android:id="@+id/home_text_u4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/home_img_u"
+                    android:layout_toRightOf="@id/home_img_u4"
                     android:text="设置" />
 
                 <TextView
-                    android:id="@+id/home_text_school"
+                    android:id="@+id/home_text_school4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
