@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 60011
 File Encoding         : 65001
 
-Date: 2016-08-04 21:12:24
+Date: 2016-08-07 20:40:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,14 +50,16 @@ CREATE TABLE `i_infoschool` (
   PRIMARY KEY (`iid`),
   KEY `depid` (`depid`),
   CONSTRAINT `i_infoschool_ibfk_1` FOREIGN KEY (`depid`) REFERENCES `s_school` (`sid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of i_infoschool
 -- ----------------------------
-INSERT INTO `i_infoschool` VALUES ('1', '5', '漂亮裙子', '销售漂亮连衣裙非诚勿扰', '11', '111', '2016');
-INSERT INTO `i_infoschool` VALUES ('2', '5', '票亮的帽子', '销售漂亮的帽子', '22', '222', '2016');
-INSERT INTO `i_infoschool` VALUES ('3', '3', '小彩虹专卖店', '销售电动车', '55', '22', '2016');
+INSERT INTO `i_infoschool` VALUES ('1', '5', '漂亮裙子', '销售漂亮连衣裙非诚勿扰，样式多样请看详情信息需要的朋友可及时联系我哦', '11', '111', '2016');
+INSERT INTO `i_infoschool` VALUES ('2', '5', '票亮的帽子', '销售漂亮的帽子，帽子全新，多种多样需要的美少女请及时联系我哦', '22', '222', '2016');
+INSERT INTO `i_infoschool` VALUES ('3', '3', '小彩虹专卖店', '销售电动车电动车8成新价格可以面议有需要的朋友可联系我', '55', '22', '2016');
+INSERT INTO `i_infoschool` VALUES ('4', '6', '转让手机平板', '手机平板9成新联系我时，请说一条街看到的信息', '88', '88', '7');
+INSERT INTO `i_infoschool` VALUES ('5', '5', '85年的红酒', '这瓶红酒85年的历史悠远价格便宜只要998就可以抱回家赶快拿起手中的电话吧机不可失时不再来', '89', '89', '88');
 
 -- ----------------------------
 -- Table structure for p_category
