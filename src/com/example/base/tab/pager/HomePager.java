@@ -59,6 +59,7 @@ public class HomePager extends BasePager
 	private AtopViewData atopdata;
 	private String url = IpUtils.MainIpServer + "/NewsShow/topShow?";
 	private String queryUrl = IpUtils.MainIpServer + "/yitiaojie/getinfomation?";// 学校名查询
+	private String AllqueryUrl = IpUtils.MainIpServer + "/yitiaojie/getInfosSchoolAll?";// 学校名查询
 	private ArrayList<TopNewPicModel> arrayList;
 	private TextView headTitle;
 	private CirclePageIndicator indicator;
@@ -95,11 +96,10 @@ public class HomePager extends BasePager
 		new DoHttpAsyn(mActivity, new NewsShowFace()).execute(url, null);
 		base_left.setOnClickListener(this);
 
-		// 初始化第一条数据
+		// 在没点击学校之前先初始化listview 数据
 
-		Map<String, String> StrParamas = new HashMap<String, String>();
-		StrParamas.put("schoolname", "北京音乐学院");
-		new DoHttpAsyn(mActivity, new QueryDataFace()).execute(queryUrl, StrParamas);
+		
+		new DoHttpAsyn(mActivity, new AllQueryDataFace()).execute(AllqueryUrl, null);
 
 		homListView.setOnRefreshListener(new onRefreshDataListener() {
 
@@ -203,7 +203,7 @@ public class HomePager extends BasePager
 		public void dataSuccess(JSONObject result) {
 			AqueryNameShowInfo showInfo = new AqueryNameShowInfo();
 			InfoarryList = showInfo.astJson(result);
-			HomeAdapter homeAda = new HomeAdapter(mActivity, InfoarryList, scName);
+			HomeAdapter homeAda = new HomeAdapter(mActivity, InfoarryList);
 			homListView.setAdapter(homeAda);
 			homeAda.notifyDataSetInvalidated();
 
@@ -214,5 +214,26 @@ public class HomePager extends BasePager
 
 		}
 
+	}
+	class AllQueryDataFace implements BaseAsyTaskInterface {
+		
+		/**
+		 * 处理网络数据返回的结果
+		 */
+		@Override
+		public void dataSuccess(JSONObject result) {
+			AqueryNameShowInfo showInfo = new AqueryNameShowInfo();
+			InfoarryList = showInfo.AllasyJson(result);
+			HomeAdapter homeAda = new HomeAdapter(mActivity, InfoarryList);
+			homListView.setAdapter(homeAda);
+			homeAda.notifyDataSetInvalidated();
+			
+		}
+		
+		@Override
+		public void dataError(String msg) {
+			
+		}
+		
 	}
 }

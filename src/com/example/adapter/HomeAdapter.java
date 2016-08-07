@@ -20,12 +20,11 @@ public class HomeAdapter extends BaseAdapter {
 	LayoutInflater layoutInflater;
 	ArrayList<SchoolInfo> array;
 	public int foodpoition;
-	private String scName;
 
-	public HomeAdapter(Context context, ArrayList<SchoolInfo> array, String scName) {
+	public HomeAdapter(Context context, ArrayList<SchoolInfo> array) {
 		this.context = context;
 		this.array = array;
-		this.scName = scName;
+		
 		layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 	}
@@ -60,7 +59,7 @@ public class HomeAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		viewHolder.textView.setText("Æßº£ÆÕ³¿");
-		viewHolder.home_text_school.setText(scName);
+		viewHolder.home_text_school.setText(array.get(position).getSchoolname());
 		viewHolder.body.setText(array.get(position).getInfobody());
 		viewHolder.infotitle.setText(array.get(position).getInfotitle());
 
