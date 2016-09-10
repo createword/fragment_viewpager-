@@ -28,6 +28,7 @@ public class AqueryNameShowInfo {
 					Sinfo.setInfotitle(array.getJSONObject(i).getString("infotitle"));
 					Sinfo.setPrice(array.getJSONObject(i).getString("price"));
 					Sinfo.setTime(array.getJSONObject(i).getString("time"));
+					Sinfo.setInfourl(array.getJSONObject(i).getString("infourl"));
 					Sinfo.setInfobody(array.getJSONObject(i).getString("infobody"));
 					arryList.add(Sinfo);
 				}
@@ -39,7 +40,7 @@ public class AqueryNameShowInfo {
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		//	System.out.println(e.getMessage());
+			// System.out.println(e.getMessage());
 		}
 
 		return arryList;
@@ -56,8 +57,10 @@ public class AqueryNameShowInfo {
 
 		try {
 			int ret = job.getInt("ret");
+			int count = job.getInt("listCount");
 			arryList = new ArrayList<SchoolInfo>();
 			if (ret == 0) {
+
 				JSONArray array = job.getJSONArray("info");
 				for (int i = 0; i < array.length(); i++) {
 					Sinfo = new SchoolInfo();
@@ -67,7 +70,9 @@ public class AqueryNameShowInfo {
 					Sinfo.setPrice(array.getJSONObject(i).getString("price"));
 					Sinfo.setTime(array.getJSONObject(i).getString("time"));
 					Sinfo.setInfobody(array.getJSONObject(i).getString("infobody"));
+					Sinfo.setInfourl(array.getJSONObject(i).getString("infourl"));
 					arryList.add(Sinfo);
+
 				}
 
 			} else {

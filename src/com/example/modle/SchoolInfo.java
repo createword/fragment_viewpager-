@@ -1,6 +1,12 @@
 package com.example.modle;
 
 public class SchoolInfo {
+	private String infobody;
+	private String infotitle;
+	private String price;
+	private String time;
+	private String infourl;
+	private String schoolname;
 
 	public String getInfotitle() {
 		return infotitle;
@@ -26,7 +32,6 @@ public class SchoolInfo {
 		this.time = time;
 	}
 
-
 	public String getInfobody() {
 		return infobody;
 	}
@@ -34,11 +39,15 @@ public class SchoolInfo {
 	public void setInfobody(String infobody) {
 		this.infobody = infobody;
 	}
-	private String infobody;
-	private String infotitle;
-	private String price;
-	private String time;
-	private String schoolname;
+
+	public String getInfourl() {
+		return infourl;
+	}
+
+	public void setInfourl(String infourl) {
+		this.infourl = infourl;
+	}
+
 	public String getSchoolname() {
 		return schoolname;
 	}

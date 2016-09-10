@@ -21,6 +21,14 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int border_color=0x7f010020;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int border_overlay=0x7f010021;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -459,7 +467,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int act_base_title=0x7f0c0017;
         public static final int act_content=0x7f0c0019;
         public static final int act_state_content=0x7f0c001a;
-        public static final int action_settings=0x7f0c0052;
+        public static final int action_settings=0x7f0c0053;
         public static final int all_pic=0x7f0c0014;
         public static final int base_left=0x7f0c001c;
         public static final int base_title=0x7f0c001d;
@@ -538,6 +546,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int userframe=0x7f0c002f;
         public static final int view_red_point=0x7f0c0009;
         public static final int vp_guide=0x7f0c0006;
+        public static final int webView1=0x7f0c0052;
     }
     public static final class integer {
         public static final int default_circle_indicator_orientation=0x7f060000;
@@ -569,6 +578,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int publish=0x7f030013;
         public static final int refresh_top_listview=0x7f030014;
         public static final int setting_pager=0x7f030015;
+        public static final int webview=0x7f030016;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;
@@ -637,13 +647,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #CircleImageView_border_color com.example.frag:border_color}</code></td><td></td></tr>
+           <tr><td><code>{@link #CircleImageView_border_overlay com.example.frag:border_overlay}</code></td><td></td></tr>
            <tr><td><code>{@link #CircleImageView_border_width com.example.frag:border_width}</code></td><td></td></tr>
            </table>
            @see #CircleImageView_border_color
+           @see #CircleImageView_border_overlay
            @see #CircleImageView_border_width
          */
         public static final int[] CircleImageView = {
-            0x7f01001f, 0x7f010020
+            0x7f01001f, 0x7f010020, 0x7f010021
         };
         /**
           <p>This symbol is the offset where the {@link com.example.frag.R.attr#border_color}
@@ -660,6 +672,20 @@ containing a value of this type.
           @attr name com.example.frag:border_color
         */
         public static final int CircleImageView_border_color = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.example.frag.R.attr#border_overlay}
+          attribute's value can be found in the {@link #CircleImageView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.frag:border_overlay
+        */
+        public static final int CircleImageView_border_overlay = 2;
         /**
           <p>This symbol is the offset where the {@link com.example.frag.R.attr#border_width}
           attribute's value can be found in the {@link #CircleImageView} array.

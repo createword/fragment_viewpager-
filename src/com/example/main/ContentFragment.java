@@ -65,7 +65,7 @@ public class ContentFragment extends BaseFragment implements OnClickListener {
 		vp.setAdapter(bAdapter);
 		vp.setOnPageChangeListener(new OnPageChangeListener() {
 			public void onPageSelected(int position) {
-
+			
 				ArryList.get(position).CustomOnCreate();// 获取当前被选中的页面, 初始化该页面数据
 			}
 

@@ -1,5 +1,6 @@
 int array navigate 0x7f090000
 int attr border_color 0x7f010020
+int attr border_overlay 0x7f010021
 int attr border_width 0x7f01001f
 int attr centered 0x7f010006
 int attr clipPadding 0x7f010011
@@ -144,7 +145,7 @@ int id OkButton_id 0x7f0c0033
 int id act_base_title 0x7f0c0017
 int id act_content 0x7f0c0019
 int id act_state_content 0x7f0c001a
-int id action_settings 0x7f0c0052
+int id action_settings 0x7f0c0053
 int id all_pic 0x7f0c0014
 int id base_left 0x7f0c001c
 int id base_title 0x7f0c001d
@@ -223,6 +224,7 @@ int id userEdit_id 0x7f0c0030
 int id userframe 0x7f0c002f
 int id view_red_point 0x7f0c0009
 int id vp_guide 0x7f0c0006
+int id webView1 0x7f0c0052
 int integer default_circle_indicator_orientation 0x7f060000
 int integer default_title_indicator_footer_indicator_style 0x7f060001
 int integer default_title_indicator_line_position 0x7f060002
@@ -250,6 +252,7 @@ int layout progress_dialog 0x7f030012
 int layout publish 0x7f030013
 int layout refresh_top_listview 0x7f030014
 int layout setting_pager 0x7f030015
+int layout webview 0x7f030016
 int menu main 0x7f0b0000
 int string action_settings 0x7f0a0001
 int string app_name 0x7f0a0000
@@ -265,8 +268,9 @@ int style Widget 0x7f080001
 int style Widget_IconPageIndicator 0x7f080004
 int style Widget_TabPageIndicator 0x7f080002
 int style userEditStyle 0x7f08000a
-int[] styleable CircleImageView { 0x7f01001f, 0x7f010020 }
+int[] styleable CircleImageView { 0x7f01001f, 0x7f010020, 0x7f010021 }
 int styleable CircleImageView_border_color 1
+int styleable CircleImageView_border_overlay 2
 int styleable CircleImageView_border_width 0
 int[] styleable CirclePageIndicator { 0x010100c4, 0x010100d4, 0x7f010006, 0x7f010008, 0x7f01000a, 0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e }
 int styleable CirclePageIndicator_android_background 1

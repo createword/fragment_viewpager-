@@ -93,4 +93,6 @@ public class DoHttpAsyn extends AsyncTask<Object, Void, String> {
 		}
 
 	}
+	
+
 }

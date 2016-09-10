@@ -75,26 +75,27 @@ public class SelectSchool_Activity extends BaseActivity implements BaseAsyTaskIn
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("pid", "1");
 		new DoHttpAsyn(SelectSchool_Activity.this, this).execute(url, params);
-		
+
 		provinceListView.setOnItemClickListener(new arryProOnItemClick());
 		Padapter = new SelectProAdapter(this, categoriesList);
 		provinceListView.setAdapter(Padapter);
 	}
-/**
- * 学校所属的省份点击事件
- * @author zhanghengming
- *
- */
+
+	/**
+	 * 学校所属的省份点击事件
+	 * 
+	 * @author zhanghengming
+	 *
+	 */
 	public class arryProOnItemClick implements OnItemClickListener {
 
 		public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3) {
-			
 
 			Map<String, String> params = new HashMap<String, String>();
-			params.put("pid", Integer.toString(position + 1));//数据库里的第一个数据就是从1开始的所以加1
+			params.put("pid", Integer.toString(position + 1));// 数据库里的第一个数据就是从1开始的所以加1
 			new DoHttpAsyn(SelectSchool_Activity.this, SelectSchool_Activity.this).execute(url, params);
 			Padapter.selectPosition(position);
-		    Padapter.notifyDataSetInvalidated();
+			Padapter.notifyDataSetInvalidated();
 			if (Sadapter == null) { // 当服务器停止服务Sadapter为空 就会报错因此得判断
 				return;
 			} else {
@@ -125,11 +126,13 @@ public class SelectSchool_Activity extends BaseActivity implements BaseAsyTaskIn
 		Utils.ToastShort(getBaseContext(), msg);
 		return;
 	}
-/**
- * 学校名称点击事件
- * @author zhanghengmign
- *
- */
+
+	/**
+	 * 学校名称点击事件
+	 * 
+	 * @author zhanghengmign
+	 *
+	 */
 	public class schoolOnItemClick implements OnItemClickListener {
 
 		public void onItemClick(AdapterView<?> parent, View arg1, int position, long arg3) {

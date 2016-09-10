@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONObject;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.activity.HomeListViewActiviity;
 import com.example.activity.Login_Activity;
 import com.example.activity.SelectSchool_Activity;
 import com.example.adapter.HomeAdapter;
@@ -38,7 +39,8 @@ import com.example.base.utils.IpUtils;
 import com.example.base.utils.LogUtils;
 import com.example.base.utils.Utils;
 import com.example.custom.view.RefreshListView;
-import com.example.custom.view.RefreshListView.onRefreshDataListener;
+import com.example.custom.view.RefreshListView.OnRefreshListener;
+
 import com.example.frag.R;
 import com.example.main.MainActivity;
 import com.example.main.MainActivity.onResultParams;
@@ -49,12 +51,11 @@ import com.example.viewpage.BasePager;
 import com.example.viewpage.TopViewPager;
 import com.viewpagerindicator.CirclePageIndicator;
 
-public class HomePager extends BasePager
-		implements OnClickListener, OnItemClickListener, OnPageChangeListener, onResultParams {
+public class HomePager extends BasePager implements OnClickListener, OnItemClickListener, OnPageChangeListener {
 	private TextView text;
 	private View view, headView;
 	private ArrayList<SchoolInfo> arryList;
-	private RefreshListView homListView;
+	private ListView homListView;
 	private TopViewPager topViewPager;
 	private AtopViewData atopdata;
 	private String url = IpUtils.MainIpServer + "/NewsShow/topShow?";
@@ -65,12 +66,33 @@ public class HomePager extends BasePager
 	private CirclePageIndicator indicator;
 	private String scName;
 	private ArrayList<SchoolInfo> InfoarryList;
+	private Map<String, Object> Mapparam;
+	private ArrayList<String> arrySchool;
+	HomeAdapter homeAda;
+	private ArrayList<SchoolInfo> temInfoarry,temallinfoaary;
+	private Handler handlerMsg = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case 100:
+				temInfoarry = (ArrayList<SchoolInfo>) msg.obj;
+				
+				break;
+			case 110:
+				temInfoarry = (ArrayList<SchoolInfo>) msg.obj;
+				
+				break;
+
+			}
+		};
+	};
+
 
 	public HomePager(MainActivity activity) {
 		super(activity);
 
 	}
 
+	@SuppressLint("InflateParams")
 	@Override
 	public void initView() {
 		ViewIsNetWorkState();
@@ -82,36 +104,41 @@ public class HomePager extends BasePager
 		indicator = (CirclePageIndicator) headView.findViewById(R.id.id_indicator);
 
 		topViewPager = (TopViewPager) headView.findViewById(R.id.topViewPager1);
-		homListView = (RefreshListView) view.findViewById(R.id.home_listview);
+		homListView = (ListView) view.findViewById(R.id.home_listview);
 
 		homListView.addHeaderView(headView);
 		flContent.addView(view);
-
+		homListView.setOnItemClickListener(this);
 	}
 
 	@Override
 	public void initData() {
-		mActivity.getMapParams(this);
+		mActivity.getMapParams(new onResultParams() {
+			@Override
+			public void MapParams(Map<String, Object> params) {
+
+				int position = (Integer) params.get("position");
+				arrySchool = (ArrayList<String>) params.get("array");
+				Map<String, String> StrParamas = new HashMap<String, String>();
+				StrParamas.put("schoolname", arrySchool.get(position).toString());
+				StrParamas.put("pid", position + "");
+				StrParamas.put("selectCount", 5 + "");
+
+				scName = arrySchool.get(position).toString();
+				base_left.setText(scName);
+
+				new DoHttpAsyn(mActivity, new QueryDataFace(true)).execute(queryUrl, StrParamas);
+
+			}
+		});
+
 		topViewPager.setOnPageChangeListener(this);
 		new DoHttpAsyn(mActivity, new NewsShowFace()).execute(url, null);
 		base_left.setOnClickListener(this);
 
 		// 在没点击学校之前先初始化listview 数据
 
-		
 		new DoHttpAsyn(mActivity, new AllQueryDataFace()).execute(AllqueryUrl, null);
-
-		homListView.setOnRefreshListener(new onRefreshDataListener() {
-
-			public void onRefreshData() {
-
-			}
-
-			public void onLoadMore() {
-
-			}
-
-		});
 
 	}
 
@@ -130,9 +157,14 @@ public class HomePager extends BasePager
 	}
 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-		Intent in = new Intent(mActivity, Login_Activity.class);
+		if (position == 0) {
+			return;
+		}
+		position=position-1;
+		Intent in = new Intent(mActivity, HomeListViewActiviity.class);
+		in.putExtra("url", temInfoarry.get(position).getInfourl());
 		mActivity.startActivity(in);
-		Utils.ToastShort(mActivity, position + "");
+	
 	}
 
 	@Override
@@ -154,23 +186,11 @@ public class HomePager extends BasePager
 	}
 
 	/**
-	 * 获取onresult 数据
+	 * 图片展示
 	 * 
-	 * @param params
+	 * @author WINTER
+	 *
 	 */
-	@Override
-	public void MapParams(Map<String, Object> params) {
-		int position = (Integer) params.get("position");
-		ArrayList<String> arrySchool = (ArrayList<String>) params.get("array");
-		scName = arrySchool.get(position).toString();
-		base_left.setText(scName);
-
-		Map<String, String> StrParamas = new HashMap<String, String>();
-		StrParamas.put("schoolname", arrySchool.get(position).toString());
-		new DoHttpAsyn(mActivity, new QueryDataFace()).execute(queryUrl, StrParamas);
-
-	}
-
 	class NewsShowFace implements BaseAsyTaskInterface {
 
 		/**
@@ -195,18 +215,29 @@ public class HomePager extends BasePager
 	}
 
 	class QueryDataFace implements BaseAsyTaskInterface {
+		boolean ismore;
+
+		public QueryDataFace(boolean ismore) {
+
+			this.ismore = ismore;
+		}
 
 		/**
 		 * 处理网络数据返回的结果
 		 */
 		@Override
 		public void dataSuccess(JSONObject result) {
+
 			AqueryNameShowInfo showInfo = new AqueryNameShowInfo();
 			InfoarryList = showInfo.astJson(result);
-			HomeAdapter homeAda = new HomeAdapter(mActivity, InfoarryList);
+
+			homeAda = new HomeAdapter(mActivity, InfoarryList);
 			homListView.setAdapter(homeAda);
 			homeAda.notifyDataSetInvalidated();
-
+			Message ms = new Message();
+			ms.what = 100;
+			ms.obj = InfoarryList;
+			handlerMsg.sendMessage(ms);
 		}
 
 		@Override
@@ -215,8 +246,9 @@ public class HomePager extends BasePager
 		}
 
 	}
+
 	class AllQueryDataFace implements BaseAsyTaskInterface {
-		
+
 		/**
 		 * 处理网络数据返回的结果
 		 */
@@ -227,13 +259,17 @@ public class HomePager extends BasePager
 			HomeAdapter homeAda = new HomeAdapter(mActivity, InfoarryList);
 			homListView.setAdapter(homeAda);
 			homeAda.notifyDataSetInvalidated();
-			
+			Message ms = new Message();
+			ms.what = 110;
+			ms.obj = InfoarryList;
+			handlerMsg.sendMessage(ms);
 		}
-		
+
 		@Override
 		public void dataError(String msg) {
-			
+
 		}
-		
+
 	}
+
 }
